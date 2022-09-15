@@ -30,3 +30,9 @@ function loadIndex() {
         ol.appendChild(li);
     })
 }
+
+function lastModified() {
+    const modifiedDate = document.lastModified();
+    const footerDiv = document.querySelector("#footerContent");
+    footerDiv.appendChild(modifiedDate);
+}

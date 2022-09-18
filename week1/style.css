@@ -1,0 +1,29 @@
+
+label {
+    margin: 10px;
+    padding: 5px;
+}
+input {
+    margin: 10px 20px;
+    padding: 5px;
+}
+
+button {
+    margin: 10px;
+    border: 1px solid gray;
+    padding: 5px;
+    width: 150px;
+    background-color: rgb(151, 215, 231);
+}
+
+button:hover {
+    border: 1px solid rgb(246, 223, 223);
+    background-color: rgb(79, 151, 169);
+}
+textarea{
+    margin: 10px;
+    padding: 5px;
+    width:800px;
+    height: 250px;
+    background-color: lightyellow;
+}

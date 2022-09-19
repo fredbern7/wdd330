@@ -8,10 +8,6 @@ input {
     padding: 5px;
 }
 
-div {
-    border: 2px red solid;
-}
-
 button {
     margin: 10px;
     border: 1px solid gray;

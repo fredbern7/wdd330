@@ -20,7 +20,8 @@ button:hover {
     border: 1px solid rgb(246, 223, 223);
     background-color: rgb(79, 151, 169);
 }
-textarea{
+
+display-div {
     margin: 10px;
     padding: 5px;
     width:800px;

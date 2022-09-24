@@ -1,15 +1,15 @@
-function loadStory(){
-    var storyName = document.getElementById("name_input").value
-    var storyHTML = localStorage.getItem(storyName)
-    document.getElementById("story_editor").value = storyHTML
-}
-function saveStory(){
-    var storyName = document.getElementById("name_input").value
-    var storyHTML = document.getElementById("story_editor").value
-    localStorage.setItem(storyName,storyHTML)
-}
+
 function display(){
     var input_value = document.getElementById("input").value
-    localStorage.setItem(input_value)
-    document.getElementById("display").innerHTML = input_value;
+    sumAll(input_value);
+   // document.getElementById("display").innerHTML = sum;
+}
+
+function sumAll(input_value) {
+    let res = 0;
+    for(i=1; i<=5; i++) {
+        res +=1;
+        console.log(res);
+    }
+    return res;
 }

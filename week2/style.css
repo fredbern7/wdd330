@@ -8,8 +8,9 @@ input {
     padding: 5px;
 }
 
-div {
-    border: 2px red solid;
+display-div {
+    margin-left: 10px;
+    background-color: rebeccapurple;
 }
 
 button {

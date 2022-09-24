@@ -19,13 +19,17 @@
 
 <main>
 
-<h2>Week 01: Exercises</h2>
+<h2>Week 02: Group Exercise</h2>
 
-<h2>Exercise One</h2>
+<label for="">Input: <input id="input" type="number"></label>
+<button onclick="Reard_Display()">Display</button>
+<div class ="display-div" id="display"> Test</div>
 
-<input id="input" type="number">
-<button onclick="display()">Display</button>
-<div id="display"></div>
+<script>
+    function Reard_Display() {
+        document.getElementById("display").innerText = document.getElementById("input").value;
+    }
+</script>
 
 </main>
 

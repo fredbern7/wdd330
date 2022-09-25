@@ -21,14 +21,56 @@
 
 <h2>Week 02: Group Exercise</h2>
 
-<label for="">Input: <input id="input" type="number"></label>
-<button onclick="Reard_Display()">Display</button>
-<div class ="display-div" id="display"> Test</div>
+<h3>Core: 3</h3>
+
+<label for="">Input: <input id="input1" type="number"> + <input id="input2" type="number"></label>
+<button onclick="sum()">Display</button>
+<div class ="display-div" id="display"></div>
+
+<h3>Stretch</h3>
+
+<label for="">Input: <input id="num1" type="number"> <input id="num2" type="number"></label>
+<button class="small-btn" onclick="Add(num1, num2)">+</button>
+<button class="small-btn" onclick="Minus()">-</button>
+<button class="small-btn" onclick="Times()">x</button>
+<button class="small-btn" onclick="Divide()">/</button>
+<div class ="display-div" id="result"></div>
 
 <script>
-    function Reard_Display() {
-        document.getElementById("display").innerText = document.getElementById("input").value;
+    function sum() {
+        let inputValue1 = document.getElementById("input1").value;
+        let inputValue2 = document.getElementById("input2").value;
+        document.getElementById("display").innerHTML = `${inputValue1} + ${inputValue2} = ${inputValue1 + inputValue2}`;
     }
+
+    //Stretch Excercise
+    
+    const num1 = parseInt(document.getElementById("num1").value);
+    const num2 = parseInt(document.getElementById("num2").value);
+
+    function Add() {
+        
+        console.log(num1);
+        //document.getElementById("result").innerHTML = num1 + num2;
+    }
+
+    function Minus() {
+        let num1 = parseInt(document.getElementById("num1").value);
+        let num2 = parseInt(document.getElementById("num2").value);
+        document.getElementById("result").innerHTML = num1 - num2;
+    }
+    function Times() {
+        let num1 = parseInt(document.getElementById("num1").value);
+        let num2 = parseInt(document.getElementById("num2").value);
+        document.getElementById("result").innerHTML = num1 * num2;
+    }
+    function Devide() {
+        let num1 = parseInt(document.getElementById("num1").value);
+        let num2 = parseInt(document.getElementById("num2").value);
+        document.getElementById("result").innerHTML = num1 / num2;
+    }
+
+
 </script>
 
 </main>
@@ -38,8 +80,5 @@
 </footer>
 </body>
 
-<script>
-loadIndex();
-</script>
 
 </html>

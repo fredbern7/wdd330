@@ -4,8 +4,10 @@ label {
     padding: 5px;
 }
 input {
-    margin: 10px 10px;
+    margin: 2px 5px;
     padding: 5px;
+    width: 40px;
+    text-align: center;
 }
 
 button {
@@ -20,10 +22,20 @@ button:hover {
     border: 1px solid rgb(246, 223, 223);
     background-color: rgb(79, 151, 169);
 }
-textarea{
-    margin: 10px;
+
+.small-btn {
+    margin: 2px;
+    border: 1px solid gray;
     padding: 5px;
-    width:800px;
-    height: 250px;
-    background-color: lightyellow;
+    width: 50px;
+    background-color: rgb(151, 215, 231);
+}
+
+.display-div {
+    margin:5px 70px;
+    padding: 5px;
+}
+
+img {
+    width: 250px;
 }

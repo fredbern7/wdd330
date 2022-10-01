@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+</head>
+
+<body>
+
+<header>
+	<h1>WDD 330 Portfolio</h1>
+</header>
+
+<main>
+
+<h2>Week 02: Exercises</h2>
+
+<h2>FizzBuzz</h2>
+
+<p>Check the script in this html file or check in the console for the result</p>
+
+<script>
+    function FizzBuzzOne() {
+        for (i=1; i<101; i++) {
+            //console.log(i);
+            if (i % 5 == 0) {
+                console.log("Fizz");
+            } else if(i % 3 == 0) {
+                console.log("Buzz");
+            }
+        }
+    }
+
+    function FizzBuzzTwo() {
+        for (i=1; i<101; i++) {
+            console.log(i);
+                if (i % 3 == 0 && i % 5 == 0) {
+                    console.log("FizzBuzz");
+                } else if (i % 5 == 0) {
+                    console.log("Buzz");
+                }
+                 else if (i % 3 == 0) {
+                    console.log("Fizz");
+                }
+        }
+    }
+
+    FizzBuzzOne();
+    FizzBuzzTwo();
+
+</script>
+
+</main>
+
+<footer>
+</footer>
+</body>
+
+
+
+</html>

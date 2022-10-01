@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+</head>
+<body>
+    <div class="code">
+        <p>
+        function Human (name) {<br>
+        ____return {<br>
+        ________name,<br>
+        ________getName () {<br>
+        ________return this.name<br>
+        ________}<br>
+        ____}<br>
+        }<br>
+      
+        const zell = new Human('Zell')<br>
+        const vincy = new Human('Vincy')<br><br>
+        console.log(zell.getName()) // Zell<br>
+        </p>
+        <p>
+            function simpleFunction () {<br>
+                console.log(this)<br>
+              }<br><br>
+              
+              const o = {<br>
+                sayThis () {<br>
+                  simpleFunction()<br>
+                }<br>
+              }<br><br>
+              
+            simpleFunction() // Window<br>
+            o.sayThis() // Window
+        </p>
+
+        
+        <script>
+            let people = [
+                {name: "aaron", age: 65},
+                {name: "beth", age: 15},
+                {name: "cara", age: 13},
+                {name: "daniel", age: 3},
+                {name: "ella", age: 25},
+                {name: "fin", age: 16},
+                {name: "george", age: 18},
+            ]
+
+            let range = {
+                lower: 13,
+                upper: 16
+            }
+
+            
+            let teenagers = people.filter(function(person) {
+                return person.age >= this.lower && person.age <= this.upper;
+            }, range)
+
+            console.log(teenagers)
+        </script>
+    </div>
+</body>
+</html>

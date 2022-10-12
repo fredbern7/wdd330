@@ -7,6 +7,7 @@
     <title>My Notes and Exercises</title>
     <script src="../js/main.js"></script>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -17,12 +18,135 @@
     <main>
         <h2>Week 04: Notes and Exercise</h2>
         <h3>Notes</h3>
-        <p>Not so many notes from this week.</p>
+        <h2>Forms</h2>
+        <ul>
+            <li>Forms are made up of a < form> element that contains form controls such as input fields, select menus and
+                    buttons. These input fields can be populated with information that is processed once the form has been
+                    submitted.
+            </li>
+            <ul>
+                <li>Types if input
+                    <ol>
+                        <li>
+                            <p>Input Field</p>
+                            <label for='donation-amount'>Input Field:
+                                <input type='text' id='name' name='name' value=''>
+                            </label>
+                        </li>
+                        <li>
+                            <p>Passwor Input Fields</p>
+                            <label for='password'>Password:
+                                <input type='password' name='password' id='password' placeholder="password"></label>
+                        </li>
+                        <li>
+                            <p>Checkbox Input Fields</p>
+                            <p>Super Powers:</p>
+                            <label for='flight'>Flight:
+                                <input type='checkbox' id='flight' value='Flight' name='powers'>
+                            </label>
+                            <label for='strength'>Super Strength:
+                                <input type='checkbox' id='strength' value='Strength' name='powers'>
+                            </label>
+                            <label for='speed'>Super Speed:
+                                <input type='checkbox' id='speed' value='Super Speed' name='powers'>
+                            </label>
+                            <label for='energy'>Energy Blasts:
+                                <input type='checkbox' id='energy' value='Energy Blasts' name='powers'>
+                            </label>
+                            <label for='telekinesis'>Telekinesis:
+                                <input type='checkbox' id='telekinesis' value='Telekinesis' name='powers'>
+                            </label>
+                        </li>
+                        <li>
+                            <p>Radio Button Input Field</p>
+                            <p>sample:</p>
+                            <p>What type of hero are you?</p>
+                            <label for='hero'>Hero:
+                                <input type='radio' name='category' value='Hero' id='hero'>
+                            </label>
+                            <label for='villain'>Villain:
+                                <input type='radio' name='category' value='Villain' id='villain'>
+                            </label>
+                            <label for='anti-hero'>Anti-Hero:
+                                <input type='radio' name='category' value='Antihero' id='anti-hero'>
+                            </label>
+                        </li>
+                        <li>
+                            <p>Select Drop-Down List</p>
+                            <label for='City'>Base of Operations:
+                                <select name='city' id='city'>
+                                    <option value='' selected>Choose a City</option>
+                                    <option value='Metropolis'>Metropolis</option>
+                                    <option value='Gotham City'>Gotham City</option>
+                                    <option value='Keystone City'>Keystone City</option>
+                                    <option value='Coast City'>Coast City</option>
+                                    <option value='Star City'>Star City</option>
+                                </select>
+                            </label>
+                        </li>
+                        <li>
+                            <p>Text Areas</p>
+                            <label for='texbox'>Text box:
+                                <textarea id='text' name='text' rows='10' cols='75'></textarea>
+                            </label>
+                        </li>
+                        <li>
+                            <p>Hidden Input Fields uses type='hidden' with hidden value.</p>
+                        </li>
+                        <li>
+                            <p>File input uses type='file'. This one is used for uploading file.</p>
+                        </li>
+                        <li>Other inputs are number, tel and color</li>
+                    </ol>
+                </li>
+            </ul>
+        </ul>
+        <h2>OOP in JavaScript</h2>
+        <ul>
+            <li>
+                Object-oriented programming (OOP for short) is a style of programming that involves separating the code into objects that have properties and methods
+    
+                <ol>
+                    There are three main concepts in OOP. encapsulation, polymonrphism and inheritance.
+                    <li>
+                        Encapsulation is when all programming logic inside and object and making methods available to make functions.
+                    </li>
+                    <li>
+                        Polymonphism makes is possible for various objects to share the same method and also override shared methods with more specific implementation.
+                    </li>
+                    <li>
+                        Inheritance:Object-oriented programming (OOP for short) is a style of programming that involves separating the code into objects that have properties and methods
+                    </li>
+                    <li>
+                        Classes is used to define a blueprint for an object. Objects are then created as an instance of that class, and inherit all the properties and methods of the class.  
+                        <ol>
+                            <li>The constructor method is special, and it solves the first problem. Its job is to initialize an instance to a valid state, and it will be called automatically so we can’t forget to initialize our objects.</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+        </ul>
+        <h2>Modern Javascript</h2>
+        <p>
+            In Modern JavaScript Development, we minimize the lines of codes by putting them in separate files and make them accessible between files.
+        </p>
+        <ul>
+            <li>
+                Libraries
+            </li>
+            <li>
+                Modular JavaScript
+            </li>
+            <li>
+                MVC framework separate an application intow Models, Views, and Controllers.
+            </li>
+        </ul>
+    
 
         <h3>exercises</h3>
         <ol>
-            <li><a href="chapter02.html">Exercise: FizzBuzz</a></li>
-            <li><a href="groupexcercise.html">Group Exercise</a></li>
+            <li><a href="hero.html">Exercise: Hero Form</a></li>
+            <li><a href="groupexercise.html">Group Exercise</a></li>
         </ol>
     <footer>
         <div><script type="text/javascript"> document.write("Page was last modified on: " + document.lastModified);</script></div>

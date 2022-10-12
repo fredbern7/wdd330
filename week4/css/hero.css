@@ -1,0 +1,63 @@
+form {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(187, 220, 198);
+    height: auto;
+    width: 80%;
+}
+
+fieldset {
+    margin:0 10px 30px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+legend {
+    font-size: 12px;
+    padding: 0 10px;
+}
+
+label {
+    margin: 10px;
+    padding-right: 10px;
+    font-size: 18px;
+}
+
+
+
+input {
+    margin-left: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.age input {
+    width: 50px;
+}
+
+select {
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 18px;
+
+}
+
+textarea {
+    border-radius: 5px;
+    vertical-align: top;
+    width: 80%;
+}
+
+button {
+    margin: 0 0 20px 10px;
+    border: rgb(149, 149, 149) 2px solid;
+    border-radius: 5px;
+    padding: 4px;
+    width: 100px;
+    font-size: 24px;
+}
+
+button:hover {
+    background-color: aquamarine;
+}

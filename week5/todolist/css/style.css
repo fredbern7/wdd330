@@ -29,7 +29,7 @@ h1 {
 }
 .add-todo-wrapper input{
     margin-bottom: 20px;
-    border-radius: 10px;
+    border-radius: 10px 0  0 10px;
     border: 2px solid gray;
     padding: 0;
     width: 250px;
@@ -40,11 +40,12 @@ h1 {
 
 .add-todo-wrapper button{
     border: 2px solid gray;
-    border-radius: 5px;
+    border-radius: 0 10px 10px 0;
     padding: 0;
-    width: 30px;
-    height: 30px;
-    background-color: rgb(141, 231, 141); 
+    width: 40px;
+    height: 35px;
+    background-color: rgb(141, 231, 141);
+    font-size: 24px; 
     font-weight: 900;
 }
 
@@ -115,7 +116,9 @@ h1 {
     padding: 4px 8px;
     border: 2px solid rgb(39, 51, 41);
     border-radius: 4px;
-    background-color: rgb(141, 231, 141);  
+    background-color: rgb(141, 231, 141); 
+    height: 35px; 
+    border-radius: 10px 0;
 }
 
 .count {

@@ -1,13 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Debugging</title>
+    <title>My Notes and Exercises</title>
+    <script src="../js/main.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+    <header>
+        <h1>WDD 330 Portfolio</h1>
+    </header>
+
+    <main>
+        <h1>Code SandBox Chapter 8</h1>
+        <h2>8.1</h2>
+        <p>
+            class MultiplicatorUnitFailure extends Error {}<br>
     
-    <script src=""></script>
+            class MultiplicatorUnitFailure extends Error {}<br>
+                function primitiveMultiply(a, b) {<br>
+                if (Math.random() < 0.2) {<br>
+                    return a * b;<br>
+                } else {<br>
+                    throw new MultiplicatorUnitFailure("Klunk");<br>
+                }<br>
+                }<br><br>
+    
+                function reliableMultiply(a, b) {<br>
+                // Your code here.<br>
+                return primitiveMultiply(a, b);<br>
+                }<br><br>
+    
+            console.log(reliableMultiply(8, 8));<br>
+        </p>
+        <footer>
+            <div>
+                <script type="text/javascript">
+                    document.write("Page was last modified on: " + document.lastModified);
+                </script>
+            </div>
+        </footer>
 </body>
+
+<script>
+    loadIndex();
+</script>
+
 </html>

@@ -33,6 +33,7 @@
 
       return div;
     }
+    
     renderOneHikeFull(hike) {
       // this method will be used to one hike with full detail...you will need this for the stretch goal! 
       //let li = document.createElement('li');

@@ -7,8 +7,6 @@ main {
     padding: 10px;
     width: 600px;
     background-color: rgb(231, 237, 240);
-    font-family: 'Poppins', sans-serif;
-    font-family: 'Roboto', sans-serif;
 }
 li {
     list-style: none;
@@ -18,6 +16,7 @@ li {
     margin: 0 auto;
     padding: 10px;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 .hike-h2 {
@@ -25,6 +24,7 @@ li {
     margin: 20px 0 5px 0;
     padding: 5px;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
 }
 .hike-container {
     display: grid;
@@ -34,10 +34,14 @@ li {
 .info {
     display: grid;
     padding: 20px;
+    font-family: 'Mukta', sans-serif;
+    font-size: large;
+    font-weight: 500;
 }
+
 .hike-h3 {
     margin-top: 10px;
-    
+    font-family: 'Fuzzy Bubbles', cursive;
 }
 .btn {
     margin: 5px 0;
@@ -60,3 +64,9 @@ li {
     padding: 10px;
     text-align: center;
 }
+.one-info {
+    font-family: 'Mukta', sans-serif;
+    font-size: large;
+    font-weight: 500;
+}
+

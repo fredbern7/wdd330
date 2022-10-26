@@ -43,5 +43,6 @@ export default class HikesController {
     });
   }
 }
-
+const myHikesController = new HikesController('hikes');
+myHikesController.showHikeList();
 

@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <h1>Form</h1>
+    <form name="comment" class="form">
+        <textarea class="input" name="comment" placeholder="comment here...."></textarea>
+        <button class="commentBtn" type="submit">submit</submit>
+    </form>
+    <script>
+        function accessForm() {
+            const form = document.forms['comment'];
+            const [textarea, button] = form.elements;
+            button.disabled = true;
+            textarea.addEventListener('input', () => {
+                if(textarea.value){
+                    button.disabled = false;
+                    button.addEventListener('click', () => {
+                        this.getvalue(textarea.value);
+                        textarea.value="";
+                    })
+                }else {
+                    button.disabled = true;
+                }
+            })
+        }
+
+        function getvalue(value) {
+            alert(value);
+        }
+
+        accessForm();
+                    
+            // if (textarea.value != "") {
+                    
+            //     }
+            // button.addEventListener('click', () => {
+                
+            // })
+    </script>
+</body>
+</html>

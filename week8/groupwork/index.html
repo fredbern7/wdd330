@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetching</title>
+</head>
+<body>
+    <main id="main">
+
+    </main>
+<script>
+
+let parentElement = document.getElementById('main');
+function createParentElementChild() {
+    let number = 3;
+    for (let i = 0; i < number; i++) {
+        let div = document.createElement('div');
+        div.classList.add('mainChild');
+        div.setAttribute('id', `div${i}`);
+        parentElement.appendChild(div);
+    }
+}
+createParentElementChild();
+
+let previous = document.createElement('button');
+let next = document.createElement('button');
+
+
+
+const requestURL = 'https://swapi.dev/api/people';
+fetch(requestURL)
+    .then(Response =>{return Response.json();})
+    .then(jsonObject =>{
+        console.log(jsonObject);
+        let count = (jsonObject.count);
+        let previous = (jsonObject.previous);
+        let next = (jsonObject.next);
+        let result = (jsonObject.results);
+});
+</script>
+</body>
+</html>

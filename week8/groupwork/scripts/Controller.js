@@ -11,52 +11,103 @@ export default class List {
     this.button = this.parentElement.children;
     
   }
-  LoadHomePagePage() {
-      this.Model.Fetch();
-      this.Model.lat();
-    }
-  
-
-    
-  // LoadHomePagePage() {
-  //   this.View.renderPage(this.parentElement);
-  //   this.Model.getList();
-  //   // AllHikes.forEach(item => {
-  //   //     this.View.renderItemList(AllItems, item);
-  //   // });
-  //   // this.addItemListener();
-  //   return;
-  //   }
-
-  showOneItem(name) {
-    // use this when you need to show just one hike...with full details
-    const item = this.Model.getItemByName(name);
-    //console.log(hike);
-    this.hikesView.renderItemFull(item,this.parentElement)
-    this.backBtn();
+  GetLink(Link) {
+    this.Model.Link(Link);
+    let url = this.Model.url(Link);
+    this.ShowItem(url);
   }
 
-  backBtn() {
+  ShowItem(url) {
+    fetch(url)
+    .then((response) => {
+      if (!response.ok) {throw new Error(`HTTP error, status = ${response.status}`);}
+      return response.json();})
+    .then((data) => {
+      console.log(data);
+      this.View.renderPage(this.parentElement);
+      let list = this.Model.getItem(data.results);
+      this.List = list;
+      this.View.renderItem(this.parentElement, list);
+      let link = data.previous;
+      //str.replace(/.$/, '!')
+      this.addItemListener(link);
+      let previous = document.getElementById('previous');
+      let next = document.getElementById('next');
+      if (data.previous == null) {
+        previous.disabled = true;
+      } else {
+        previous.disabled = false;
+        this.previousListener(previous, data.previous);
+      }
+      if (data.next == null) {
+        next.disabled = true;
+      } else {
+        next.disabled = false;
+        this.nextListener(next, data.next);
+      }
+      })
+    .catch((error) => {
+      console.log(error)
+      });
+    }
+  backLink() {
+      let page = backLink.charAt(link.length-1)
+      if (backLink != null) {
+        if(page < 10 ) {
+          let page = n - 1;
+          let Link = backLink.replace(/.$/, `${page}`)
+          let y = document.getElementById('btn');
+          y.addEventListener('click', () => {
+            this.parentElement.innerHTML="";
+            this.GetLink(Link)
+          })
+        } else {
+          link.replace(/.$/, `${9}`)
+        }
+      }
+  }
+  showOneItem(name, link) {
+    let oneItem = this.Model.getItemByName(this.List, name)
+    this.View.renderItemFull(oneItem,this.parentElement)
+    this.backBtn(link);
+    console.log(oneItem);
+  }
+
+  backBtn(link) {
     let y = document.getElementById('btn');
+    console.log(y);
     y.addEventListener('click', () => {
       this.parentElement.innerHTML="";
-      this.showAllItems();
+      if (link == null) {
+        let Link = `https://swapi.dev/api/people/`;
+        console.log(Link)
+      } else {
+        let Link = link;
+        console.log(Link)
+      }
+      
     })
   }
-
-  addItemListener() {
-    // for the stretch you will need to attach a listener to each of the listed hikes to watch for a touchend. 
-    const childrenArray = Array.from(this.parentElement.children);
-    //console.log(this.parentElement.children);
+  previousListener(previous, link) {
+    let Link = link;
+    previous.addEventListener('click', () => {
+      this.GetLink(Link);
+    });
+  }
+  nextListener(next, link) {
+    let Link = link;
+    next.addEventListener('click', () => {
+      this.GetLink(Link);
+    });
+  }
+  addItemListener(link) {
+    const childrenArray = Array.from(this.parentElement.children[1].children);
+    console.log(link);
     childrenArray.forEach(child => {
       child.addEventListener('click', e => {
         // why currentTarget instead of target?
-        this.showOneHike(e.currentTarget.dataset.name);
+        this.showOneItem(e.currentTarget.dataset.name, link);
       });
     });
   }
 }
-
-//const myHikesController = new HikesController('hikes');
-//myHikesController.showHikeList();
-

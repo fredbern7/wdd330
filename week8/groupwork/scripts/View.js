@@ -1,9 +1,6 @@
  // Hike View handler
   export default class View {
     constructor(listElementId) {
-      // will need this
-      this.imgBasePath = '//byui-cit.github.io/cit261/examples/';
-
     }
     renderPage(parentElement) {
       parentElement.innerHTML = `
@@ -12,6 +9,18 @@
             <button type="button" id="next">Next</button>
         </div>
       `;
+    }
+    renderItem(parentElement, list) {
+      let div = document.createElement('div');
+      parentElement.appendChild(div);
+      list.forEach(item => {
+        let people = document.createElement('div');
+        people.setAttribute('data-name', item.name)
+        people.innerHTML = `
+          <h1>${item.name}</h1>
+        `
+        div.appendChild(people)
+      });
     }
     renderItemList(AllItems, item) {
       let li = document.createElement('li');
@@ -32,17 +41,24 @@
       return div;
     }
     
-    renderItemFull(item) {
-      document.getElementById('hikes').innerHTML = `
+    renderItemFull(oneItem, parentElement) {
+      parentElement.innerHTML = ""
+      let div = document.createElement('div');
+      let info = document.createElement('div');
+      parentElement.appendChild(div);
+      parentElement.appendChild(info);
+      div.innerHTML = `
         <button class='btn' id='btn'>Go back</button>
-        <li class="li">
-        <div class="one-hike">
-        <div class="one-hike-container">
-        <img class="img" src="${this.imgBasePath}/${hike.imgSrc}" alt="${hike.imgAlt}">
-        <h2 class="hike-h2">${item.name}</h2>
-        </div>
-        <li>
       `;
+      info.innerHTML = `
+      <h3>${oneItem.name}</h3>
+      <p>Hair Color: ${oneItem.hair_color}</p>
+      `
+      
+
+
+      
+      
     }
 }
 

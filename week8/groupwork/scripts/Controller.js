@@ -70,34 +70,90 @@ export default class List {
     let oneItem = this.Model.getItemByName(this.List, name)
     this.View.renderItemFull(oneItem,this.parentElement)
     this.backBtn(link);
-    console.log(oneItem);
+    document.getElementById('itembtn').classList.add('active');
+    document.getElementById('film').classList.remove('active');
+    document.getElementById('starship').classList.remove('active');
+    document.getElementById('vehicle').classList.remove('active');
+    document.getElementById('basic').classList.remove('hide');
+    document.getElementById('starshipUl').classList.add('hide');
+    document.getElementById('filmUl').classList.add('hide');
+    document.getElementById('vehicleUl').classList.add('hide');
+    this.itemBtn();
+    this.films();
+    this.starship();
+    this.vehicles();
+  }
+  itemBtn() {
+    document.getElementById('itembtn').addEventListener('click', () => {
+      document.getElementById('itembtn').classList.add('active');
+      document.getElementById('film').classList.remove('active');
+      document.getElementById('starship').classList.remove('active');
+      document.getElementById('vehicle').classList.remove('active');
+      document.getElementById('basic').classList.remove('hide');
+      document.getElementById('starshipUl').classList.add('hide');
+      document.getElementById('filmUl').classList.add('hide');
+      document.getElementById('vehicleUl').classList.add('hide');
+    })
+  }
+  films() {
+    document.getElementById('film').addEventListener('click', () => {
+      document.getElementById('itembtn').classList.remove('active');
+      document.getElementById('film').classList.add('active');
+      document.getElementById('starship').classList.remove('active');
+      document.getElementById('vehicle').classList.remove('active');
+      document.getElementById('basic').classList.add('hide');
+      document.getElementById('starshipUl').classList.add('hide');
+      document.getElementById('filmUl').classList.remove('hide');
+      document.getElementById('vehicleUl').classList.add('hide');
+    })
+  }
+  starship() {
+    document.getElementById('starship').addEventListener('click', () => {
+      document.getElementById('itembtn').classList.remove('active');
+      document.getElementById('film').classList.remove('active');
+      document.getElementById('starship').classList.add('active');
+      document.getElementById('vehicle').classList.remove('active');
+      document.getElementById('basic').classList.add('hide');
+      document.getElementById('starshipUl').classList.remove('hide');
+      document.getElementById('filmUl').classList.add('hide');
+      document.getElementById('vehicleUl').classList.add('hide');
+    })
+  }
+  vehicles() {
+    document.getElementById('vehicle').addEventListener('click', () => {
+      document.getElementById('itembtn').classList.remove('active');
+      document.getElementById('film').classList.remove('active');
+      document.getElementById('starship').classList.remove('active');
+      document.getElementById('vehicle').classList.add('active');
+      document.getElementById('basic').classList.add('hide');
+      document.getElementById('starshipUl').classList.add('hide');
+      document.getElementById('filmUl').classList.add('hide');
+      document.getElementById('vehicleUl').classList.remove('hide');
+    })
   }
 
+
   backBtn(link) {
-    let y = document.getElementById('btn');
     let page = link.charAt(link.length-1)
-    console.log(page)
       if (link != null) {
         if(page < 10 ) {
           let n = page - 1;
-          console.log(n);
           let Link = link.replace(/.$/, `${n}`)
-          let y = document.getElementById('btn');
-          y.addEventListener('click', () => {
-            console.log(Link)
-            this.parentElement.innerHTML="";
-            this.GetLink(Link)
-          })
+          this.backBtnListener(Link);
         } else {
           y.addEventListener('click', () => {
             let Link = link.replace(/.$/, `${9}`)
-            console.log(Link)
-            this.parentElement.innerHTML="";
-            this.GetLink(Link)
+            this.backBtnListener(Link);
           })
         }
     }
-
+  }
+  backBtnListener(Link) {
+    let y = document.getElementById('navigationBtn');
+    y.addEventListener('click', () => {
+      this.parentElement.innerHTML="";
+      this.GetLink(Link);
+    })
   }
   previousListener(previous, link) {
     let Link = link;

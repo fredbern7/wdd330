@@ -28,7 +28,7 @@ export default class List {
       let list = this.Model.getItem(data.results);
       this.List = list;
       this.View.renderItem(this.parentElement, list);
-      let link = data.previous;
+      let link = data.next;
       //str.replace(/.$/, '!')
       this.addItemListener(link);
       let previous = document.getElementById('previous');
@@ -75,18 +75,29 @@ export default class List {
 
   backBtn(link) {
     let y = document.getElementById('btn');
-    console.log(y);
-    y.addEventListener('click', () => {
-      this.parentElement.innerHTML="";
-      if (link == null) {
-        let Link = `https://swapi.dev/api/people/`;
-        console.log(Link)
-      } else {
-        let Link = link;
-        console.log(Link)
-      }
-      
-    })
+    let page = link.charAt(link.length-1)
+    console.log(page)
+      if (link != null) {
+        if(page < 10 ) {
+          let n = page - 1;
+          console.log(n);
+          let Link = link.replace(/.$/, `${n}`)
+          let y = document.getElementById('btn');
+          y.addEventListener('click', () => {
+            console.log(Link)
+            this.parentElement.innerHTML="";
+            this.GetLink(Link)
+          })
+        } else {
+          y.addEventListener('click', () => {
+            let Link = link.replace(/.$/, `${9}`)
+            console.log(Link)
+            this.parentElement.innerHTML="";
+            this.GetLink(Link)
+          })
+        }
+    }
+
   }
   previousListener(previous, link) {
     let Link = link;

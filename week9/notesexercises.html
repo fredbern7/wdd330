@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Notes and Exercises</title>
+    <script src="../js/main.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>WDD 330 Portfolio</h1>
+    </header>
+
+    <main>
+        <h2>Week 09: Scripts I used for my groupwork project</h2>
+        <h3>Notes</h3>
+        <ul>
+            <li>Time Function
+                <ul>
+                    <li>window.setTimeout( () => alert("Time's Up!"), 3000);<br>
+                        << 4
+                    </li>
+                    <li>
+                        window.clearTimeout(5);<br>
+                        << undefined
+                    </li>
+                    <li>setInterval()<br>
+                        The window.setInterval() method works in a similar way to window.setTimeout(), except that it will repeatedly invoke the callback function after every given number of milliseconds.<br>
+                        function chant(){ console.log('Beetlejuice'); }<br>
+                        const summon = window.setInterval(chant,1000);<br>
+                        << 6
+                    </li>
+                    <li>window.clearInterval(summon);
+
+                    </li>
+                </ul>
+
+            </li>
+            <li>Browser Information
+                <ul>
+                    <li>
+
+                    </li>
+                </ul>
+
+            </li>
+        </ul>
+
+
+        <h3>exercises</h3>
+        <ol>
+            <li>This week I worked on the example exercises from Chapter 14: HTML5 APIs. </li>
+            <li><a href="exercise/factorizing.html">Factorizing</a></li>
+            <li><a href="exercise/square.html">Spinning Square</a></li>
+            <li><a href="exercise/websocket.html">Websocket</a></li>
+            <li><a href="groupwork/index.html">Group Exercise</a></li>
+        </ol>
+        <footer>
+            <div>
+                <script type="text/javascript">
+                    document.write("Page was last modified on: " + document.lastModified);
+                </script>
+            </div>
+        </footer>
+</body>
+
+<script>
+    loadIndex();
+</script>
+
+</html>

@@ -16,10 +16,21 @@ main {
     margin: 20px;
     min-height: 90vh;
 }
-
+h1, h2, h3 {
+    font-weight: 500;
+}
+h1 {
+    font-size: 24px;
+}
+h2 {
+    font-size: 20px;
+}
+h3 {
+    font-size: 18px;
+}
 main li {
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 2px;
+    font-size: 16px;
 }
 footer {
     margin: 20px 0;

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Notes and Exercises</title>
+    <script src="../js/main.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+    li {font-weight:lighter; color: rgb(39, 33, 33);}
+    em {font-weight: bolder; color:rebeccapurple ;}
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>WDD 330 Portfolio</h1>
+    </header>
+
+    <main>
+        <h2>Week 09: </h2>
+        <h2>Notes</h2>
+        <h3>Client-side form Validation</h3>
+        <ul>
+            <li>Client-validation is done at the browser.</li>
+            <li>Server-side validation is done at tne server.</li>
+            <li>Reasons to use validation.
+                <ul>
+                    <li>
+                        <em>We want to get the right data, in the right format.</em> Our applications won't work properly if our users' data is stored in the wrong format, is incorrect, or is omitted altogether.
+                    </li>
+                    <li>
+                        <em>We want to protect our users' data.</em> Forcing our users to enter secure passwords makes it easier to protect their account information.
+                    </li>
+                    <li>
+                        <em>We want to protect ourselves.</em> There are many ways that malicious users can misuse unprotected forms to damage the application.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h3>Types of Client-side validation</h3>
+        <ul>
+            <li><em>Built-in form validation</em> uses HTML form validation features, which we've discussed in many places throughout this module. This validation generally doesn't require much JavaScript. Built-in form validation has better performance than JavaScript, but it is not as customizable as JavaScript validation.
+            <ul>
+                <li>required, minlength, maxlegnth, min, max, type, pattern</li>
+                <li>When the data is valid, The followings will happen:
+                    <ul>
+                        <li>The element matches the <em>:valid</em> CSS pseudo-class, which lets you apply a specific style to valid elements.</li>
+                        <li>If the user tries to send the data, the browser will submit the form, provided there is nothing else stopping it from doing so (e.g., JavaScript).</li>
+                        <li>If the user tries to send the data, the browser will block the form and display an error message.</li>
+                    </ul>
+                </li>
+                <li>The followings will happen when the data is not valid:
+                    <ul>
+                        <li>
+                            The element matches the <em>:invalid</em> CSS pseudo-class, and sometimes other UI pseudo-classes (e.g., <em>:out-of-range</em>) depending on the error, which lets you apply a specific style to invalid elements.
+                        </li>
+                    </ul>
+                </li>
+                
+            </ul>
+            
+            </li>
+            <li><em>JavaScript</em> validation is coded using JavaScript. This validation is completely customizable, but you need to create it all (or use a library).</li>
+        </ul>
+        <h2>exercises</h2>
+        <ol>
+            <li>This week I was only busy with the group project. </li>
+            <li><a href="groupwork/index.html">Group Exercise</a></li>
+        </ol>
+        <footer>
+            <div>
+                <script type="text/javascript">
+                    document.write("Page was last modified on: " + document.lastModified);
+                </script>
+            </div>
+        </footer>
+</body>
+
+<script>
+    loadIndex();
+</script>
+
+</html>

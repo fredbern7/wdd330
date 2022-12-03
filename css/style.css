@@ -32,6 +32,8 @@ main li {
     margin-bottom: 2px;
     font-size: 16px;
 }
+li {font-weight:lighter; color: rgb(39, 33, 33);}
+em {font-weight: bolder; color:rebeccapurple ;}
 footer {
     margin: 20px 0;
     padding: 10px;

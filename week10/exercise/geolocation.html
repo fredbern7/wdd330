@@ -8,10 +8,12 @@
 </head>
 <body>
     <h1>Geoloation API in JavaScript</h1>
-
+    <button id="btn">Display Your location</button>
+    <div id="display"></div>
     <script>
         const successCallback = (position) => {
             console.log(position);
+            this.position = position;
         }
 
         const errorCallback = (error) => {
@@ -19,6 +21,17 @@
         }
         
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
+        let button = document.getElementById('btn');
+        button.addEventListener('click', () => {
+            let div = document.getElementById('display')
+            div.innerHTML = `
+            <h3>latitude</h3>
+            <p>${this.position.coords.latitude}</p>
+            <h3>longitude</h3>
+            <p>${this.position.coords.longitude}</p>
+            `;
+        })
     </script>
 </body>
 </html>

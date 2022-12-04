@@ -13,7 +13,7 @@ export async function getJSON(url) {
 }
 
 export const getLocation = function(options) {
-  return new Promise(function(resolve, reject, options) {
-    navigator.geolocation.getCurrentPosition(resolve, reject, options);
+  return new Promise(function(success, error) {
+    navigator.geolocation.getCurrentPosition(success, error, options);
   });
 };

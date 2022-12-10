@@ -1,0 +1,13 @@
+search history/clear/back
+view history/clear/back
+deleted history/clear/back
+added history/clear/back
+
+menu
+**********************
+homePage
+myList
+mySearchHistory
+myviewHistory/mostViewedItem/showNumbers
+myAddedHistory
+myDeletedHistory

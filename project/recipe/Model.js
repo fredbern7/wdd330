@@ -1,11 +1,29 @@
 //database, adding item, editing item, filtering, etc.
 
-let LIST = [];
+let MY_LIST = 'saved_list';
+let SEARCH_HISTORY = 'search_history';
+let ADDED_HISTORY = 'added_history';
+let DELETED_HISTORY = 'deleted_history';
+
 export default class Model {
   constructor() {
     // We need a constructor...but in this case it isn't doing much
   }
-  search() {
+  async fetching() {
+    const url = `https://www.themealdb.com/api/json/v2/9973533/randomselection.php`;
+    return fetch(url)
+        .then((response) => {
+            return response.json();
+        })
+  }
+
+  async search() {
+    let input = document.getElementById('input').value;
+    const url = `https://www.themealdb.com/api/json/v2/9973533/search.php?s=${input}`;
+    return fetch(url)
+        .then((response) => {
+            return response.json();
+        })
   }
 
   getSavedItem() {

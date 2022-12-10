@@ -3,13 +3,35 @@
 export default class View {
     constructor() {
     }
-    renderForm() {
-        //render form
+    renderHomePage(mainElement) {
+        mainElement.innerHTML = `
+            <main>
+                <form class="hide">
+                    <input type="text" id="input" placeholder="input food....">
+                    <input type="button" value="search" id="submit">
+                </form>
+                <div class="div-description" id="div-description"></div>
+                <div class="results" id="results">
+
+                </div>
+                <div class="storeFoods" id="storeFoods">
+                    
+                </div>
+            </main>
+        ` 
     }
-    renderSearchedItem() {
+    renderItems(item, parentElement) {
         //render a list of searched Items
+        let div = document.createElement('div');
+        div.classList.add('item-div');
+        div.innerHTML = `
+        <img class="img" src="${item.strMealThumb}" alt="${item.strMeal}">
+        <p>${item.strMeal}</p>
+        `;
+        parentElement.appendChild(div);
+
     }
-    renderSearchedItemDetails() {
+    renderDetails() {
         //render details of searched Items
     }
     renderLocalList() {

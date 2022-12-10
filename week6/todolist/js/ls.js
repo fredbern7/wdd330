@@ -16,14 +16,15 @@ function saveTodo(todo) {
     let todoList = getTodoList();
     todoList.push(todo);
     localStorage.setItem(TODO_LIST, JSON.stringify(todoList))
-    console.clear(todoList);
-    console.table(todoList)
+    // console.clear(todoList);
+    // console.table(todoList);
 }
 
 function changeBoolean(ids) {
     const todoList = getTodoList();
     let upList = todoList.filter(todo => todo.id == ids);
     let id = Number(ids)
+    console.log(id);
     if (upList[0].completed == false) {
         let remove = {id, content: upList[0].content, completed: false}
         removeItem(remove)

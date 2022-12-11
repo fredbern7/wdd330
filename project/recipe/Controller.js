@@ -66,11 +66,22 @@ export default class Controller {
     `;
     parentElement.innerHTML = "";
     this.Model.oneItem(id)
-    .then((item) => {
+    .then((data) => {
+      let item = data.meals[0];
       console.log(item);
       this.View.renderDetails(item, parentElement)
     })
+    setTimeout(() => this.removeEmptyLi(), 5000)
   }
+
+  removeEmptyLi() {
+    let li = document.getElementById('ingredi');
+    let list = Array.from(li.children);
+    list.forEach((item) => {
+      console.log('1');
+    })
+  }
+
 
   async addListener(parentElement) {
     // for the stretch you will need to attach a listener to each of the listed hikes to watch for a touchend. 

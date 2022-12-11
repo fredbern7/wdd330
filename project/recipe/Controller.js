@@ -77,7 +77,7 @@ export default class Controller {
     await parentElement;
     const childrenArray = Array.from(parentElement.children);
     childrenArray.forEach(child => {
-      child.children[2].addEventListener('click', e => {
+      child.children[1].addEventListener('click', e => {
         let id = e.currentTarget.dataset.name;
         this.showOneItem(id, parentElement);
       });

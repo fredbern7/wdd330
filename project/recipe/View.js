@@ -26,8 +26,8 @@ export default class View {
         div.classList.add('item-div');
         div.innerHTML = `
         <img class="img" src="${item.strMealThumb}" alt="${item.strMeal}">
-        <p>${item.strMeal}</p>
         <input class="view" type="button" value="View" data-name="${item.idMeal}">
+        <p>${item.strMeal}</p>
         `;
         parentElement.appendChild(div);
         return;

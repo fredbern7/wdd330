@@ -45,7 +45,6 @@ export default class Controller {
 
   // random pick button and pick random
   random(parentElement) {
-    //parentElement.innerHTML = "";
     document.getElementById('div-description').innerHTML = `
     <p class = "description">This is a random selection... please search if your choice is not here...</p>
     `;
@@ -61,10 +60,15 @@ export default class Controller {
     return;
   }
 
-  showOneItem(id) {
+  showOneItem(id, parentElement) {
+    document.getElementById('div-description').innerHTML = `
+    <p class = "description">If you like it add it to you recipe list...</p>
+    `;
+    parentElement.innerHTML = "";
     this.Model.oneItem(id)
-    .then((data) => {
-      console.log(data);
+    .then((item) => {
+      console.log(item);
+      this.View.renderDetails(item, parentElement)
     })
   }
 
@@ -73,10 +77,9 @@ export default class Controller {
     await parentElement;
     const childrenArray = Array.from(parentElement.children);
     childrenArray.forEach(child => {
-      child.addEventListener('click', e => {
-        // why currentTarget instead of target?
+      child.children[2].addEventListener('click', e => {
         let id = e.currentTarget.dataset.name;
-        this.showOneItem(id);
+        this.showOneItem(id, parentElement);
       });
     });
   }

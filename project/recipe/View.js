@@ -35,12 +35,12 @@ export default class View {
     }
     renderDetails(item, parentElement) {
         //render details of searched Items
-        let list = [];
-        for (let v = 1; i < 20; i++) {
-            list.push(i);
-            // if (`item.strIngredient${i}` != null ||`item.strIngredient${i}` != " ") {
-            //     ul.push(`<li class="item.strIngredient${i}">item.strMeasure${i} item.strIngredient${i}</li>`)
-            // }
+        let ul = document.createElement('ul');
+        let list = []
+        for (let i = 1; i < 20; i++) {
+            if (`item.strIngredient${i}` != null ||`item.strIngredient${i}` != " ") {
+                list.push(`<li class="item.strIngredient${i}">item.strMeasure${i} item.strIngredient${i}</li>`)
+            }
         };
         console.log(list);
         let div = document.createElement('div');

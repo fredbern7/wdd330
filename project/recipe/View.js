@@ -35,6 +35,14 @@ export default class View {
     }
     renderDetails(item, parentElement) {
         //render details of searched Items
+        let list = [];
+        for (let v = 1; i < 20; i++) {
+            list.push(i);
+            // if (`item.strIngredient${i}` != null ||`item.strIngredient${i}` != " ") {
+            //     ul.push(`<li class="item.strIngredient${i}">item.strMeasure${i} item.strIngredient${i}</li>`)
+            // }
+        };
+        console.log(list);
         let div = document.createElement('div');
         div.classList.add('details-div');
         div.innerHTML = `
@@ -48,33 +56,33 @@ export default class View {
                 <p>${item.strMeal}</p>
             </div>
 
-            <div class="instructions">
+            <div class="ingredient">
                 <ul id="ingredi">
-                    <li>${item.strMeasure1}: ${item.strIngredient1}</li>
-                    <li>${item.strMeasure2}: ${item.strIngredient2}</li>
-                    <li>${item.strMeasure3}: ${item.strIngredient3}</li>
-                    <li>${item.strMeasure4}: ${item.strIngredient4}</li>
-                    <li>${item.strMeasure5}: ${item.strIngredient5}</li>
-                    <li>${item.strMeasure6}: ${item.strIngredient6}</li>
-                    <li>${item.strMeasure7}: ${item.strIngredient7}</li>
-                    <li>${item.strMeasure8}: ${item.strIngredient8}</li>
-                    <li>${item.strMeasure9}: ${item.strIngredient9}</li>
-                    <li>${item.strMeasure10}: ${item.strIngredient10}</li>
-                    <li>${item.strMeasure11}: ${item.strIngredient11}</li>
-                    <li>${item.strMeasure12}: ${item.strIngredient12}</li>
-                    <li>${item.strMeasure13}: ${item.strIngredient13}</li>
-                    <li>${item.strMeasure14}: ${item.strIngredient14}</li>
-                    <li>${item.strMeasure15}: ${item.strIngredient15}</li>
-                    <li>${item.strMeasure16}: ${item.strIngredient16}</li>
-                    <li>${item.strMeasure17}: ${item.strIngredient17}</li>
-                    <li>${item.strMeasure18}: ${item.strIngredient18}</li>
-                    <li>${item.strMeasure19}: ${item.strIngredient19}</li>
-                    <li>${item.strMeasure20}: ${item.strIngredient20}</li>
+                    <li class="${item.strIngredient1}">${item.strMeasure1} ${item.strIngredient1}</li>
+                    <li class="${item.strIngredient2}">${item.strMeasure2} ${item.strIngredient2}</li>
+                    <li class="${item.strIngredient3}">${item.strMeasure3} ${item.strIngredient3}</li>
+                    <li class="${item.strIngredient4}">${item.strMeasure4} ${item.strIngredient4}</li>
+                    <li class="${item.strIngredient5}">${item.strMeasure5} ${item.strIngredient5}</li>
+                    <li class="${item.strIngredient6}">${item.strMeasure6} ${item.strIngredient6}</li>
+                    <li class="${item.strIngredient7}">${item.strMeasure7} ${item.strIngredient7}</li>
+                    <li class="${item.strIngredient8}">${item.strMeasure8} ${item.strIngredient8}</li>
+                    <li class="${item.strIngredient9}">${item.strMeasure9} ${item.strIngredient9}</li>
+                    <li class="${item.strIngredient10}">${item.strMeasure10} ${item.strIngredient10}</li>
+                    <li class="${item.strIngredient11}">${item.strMeasure11} ${item.strIngredient11}</li>
+                    <li class="${item.strIngredient12}">${item.strMeasure12} ${item.strIngredient12}</li>
+                    <li class="${item.strIngredient13}">${item.strMeasure13} ${item.strIngredient13}</li>
+                    <li class="${item.strIngredient14}">${item.strMeasure14} ${item.strIngredient14}</li>
+                    <li class="${item.strIngredient15}">${item.strMeasure15} ${item.strIngredient15}</li>
+                    <liclass="${item.strIngredient16}">${item.strMeasure16} ${item.strIngredient16}</li>
+                    <li class="${item.strIngredient17}">${item.strMeasure17} ${item.strIngredient17}</li>
+                    <li class="${item.strIngredient18}">${item.strMeasure18} ${item.strIngredient18}</li>
+                    <li class="${item.strIngredient19}">${item.strMeasure19} ${item.strIngredient19}</li>
+                    <li class="${item.strIngredient20}">${item.strMeasure20} ${item.strIngredient20}</li>
                 </ul>
             </div>
         </div>
-        <div class="ingredient">
-
+        <div class="instructions">
+            <p>${item.strInstructions}</p>
         </div>
         `;
         parentElement.appendChild(div);

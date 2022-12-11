@@ -8,14 +8,17 @@
 <body>
     <script>
         let ingred = []
+        //let list = JSON.stringify(ingred)
         for (let j = 1; j < 20; j++) {
-            ingred.push(`strMeasure${j}: strIngredient${j}`);
+            let item = `strMeasure${j} , strIngredient${j}`;
+            ingred.push(item);
         }
         console.log(ingred)
-        ingred.forEach((data) => (
-            
-        ))
-        
+        let newList = []
+        ingred.forEach((item) => {
+            newList.push(item);
+        })
+        console.log(newList)
     </script>
 </body>
 </html>

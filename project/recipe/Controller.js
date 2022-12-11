@@ -67,6 +67,7 @@ export default class Controller {
     parentElement.innerHTML = "";
     this.Model.oneItem(id)
     .then((data) => {
+      console.log(data)
       let item = data.meals[0];
       console.log(item);
       this.View.renderDetails(item, parentElement)
@@ -77,8 +78,10 @@ export default class Controller {
   removeEmptyLi() {
     let li = document.getElementById('ingredi');
     let list = Array.from(li.children);
+    console.log(list)
+    let newList = []//JSON.stringify([])
     list.forEach((item) => {
-      console.log('1');
+      console.log(item.value)
     })
   }
 

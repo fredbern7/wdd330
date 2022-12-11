@@ -128,6 +128,12 @@ form>input {
     inline-size:150px;
     overflow-wrap: break-word;
 }
+.view {
+    border-radius: 5px;
+    width: 100%;
+    height: 35px;
+    background-color: rgb(158, 135, 181);
+}
 
 .clearfix:after {
     content: "";

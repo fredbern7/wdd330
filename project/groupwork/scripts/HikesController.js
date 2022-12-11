@@ -34,7 +34,7 @@ export default class HikesController {
   addHikeListener() {
     // for the stretch you will need to attach a listener to each of the listed hikes to watch for a touchend. 
     const childrenArray = Array.from(this.parentElement.children);
-    console.log(childrenArray);
+    console.log(this.parentElement.children);
     childrenArray.forEach(child => {
       child.addEventListener('touchend', e => {
         // why currentTarget instead of target?

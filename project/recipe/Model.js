@@ -26,6 +26,13 @@ export default class Model {
         })
   }
 
+  async oneItem(id) {
+    const url = `https://www.themealdb.com/api/json/v2/9973533/lookup.php?i=${id}`;
+    return fetch(url)
+    .then((response) => {
+        return response.json();
+    })
+  }
   getSavedItem() {
     // should return a list of all the in the LocalStorage.
     return LocalList;

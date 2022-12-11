@@ -2,20 +2,19 @@ import Model from './Model.js';
 import View from './View.js';
 
 export default class Controller {
-  constructor(resultsId, mainId) {
+  constructor(mainId) {
     this.mainElement = document.getElementById(mainId);
-    this.parentElement = resultsId;
     this.Model = new Model();
-    this.View = new View(resultsId);
+    this.View = new View();
   }
   
   //search and preview the result
   homepage() {
     this.View.renderHomePage(this.mainElement);
     this.menu();
-    let parentElement = document.getElementById(this.parentElement)
+    let parentElement = document.getElementById("results");
     this.random(parentElement);
-    this.form(parentElement);
+    return;
   }
   menu() {
     let menu = document.getElementById('menu');
@@ -40,14 +39,13 @@ export default class Controller {
         }
       })
       document.getElementById('input').value="";
-      this.addListener();
     })
     return;
   }
 
   // random pick button and pick random
   random(parentElement) {
-    parentElement.innerHTML = "";
+    //parentElement.innerHTML = "";
     document.getElementById('div-description').innerHTML = `
     <p class = "description">This is a random selection... please search if your choice is not here...</p>
     `;
@@ -55,25 +53,32 @@ export default class Controller {
     .then((data) => {
       let list = data.meals;
       for (let i = 0; i < list.length; i++) {
-        this.View.renderItems(list[i], parentElement);
+       this.View.renderItems(list[i], parentElement);
       }
     })
-    this.addListener(parentElement);
+    setTimeout(() => this.addListener(parentElement), 5000)
+    
     return;
   }
 
-  addListener(parentElement) {
-    // for the stretch you will need to attach a listener to each of the listed hikes to watch for a touchend. 
-    const childrenArray = parentElement.children;
-    console.log(childrenArray)
+  showOneItem(id) {
+    this.Model.oneItem(id)
+    .then((data) => {
+      console.log(data);
+    })
+  }
 
-    // childrenArray.forEach(child => {
-    //   child.addEventListener('click', e => {
-    //     console.log('work')
-    //     // why currentTarget instead of target?
-    //     //this.showOneHike(e.currentTarget.dataset.name);
-    //   });
-    // });
+  async addListener(parentElement) {
+    // for the stretch you will need to attach a listener to each of the listed hikes to watch for a touchend. 
+    await parentElement;
+    const childrenArray = Array.from(parentElement.children);
+    childrenArray.forEach(child => {
+      child.addEventListener('click', e => {
+        // why currentTarget instead of target?
+        let id = e.currentTarget.dataset.name;
+        this.showOneItem(id);
+      });
+    });
   }
 
 

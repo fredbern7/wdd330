@@ -1,6 +1,9 @@
 /* 35em is also 560px when basefont is 16px */
 @media only screen and (min-width: 35rem) {
-  
+    /* div {
+        border: 1px red solid;
+    } */
+    
     nav button {
         display: none;
     }
@@ -73,7 +76,6 @@
         padding-left: 30px;
         width: 100%;
         margin-bottom: -125px;
-        
     }
     .back, .add {
         border: none;
@@ -95,6 +97,7 @@
     }
     .ingredient {
         padding: 10px;
+        font-size: 18px;
     }
     .ingredient li {
         list-style: none;
@@ -115,6 +118,7 @@
         width: 100%;
         font-style: italic;
         font-weight: 500;
+        font-size: 18px;
     }
     
 }

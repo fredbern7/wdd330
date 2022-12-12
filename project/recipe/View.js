@@ -6,7 +6,7 @@ export default class View {
     renderHomePage(mainElement) {
         return mainElement.innerHTML = `
             <main>
-                <form class="hide">
+                <form id="form">
                     <input type="text" id="input" placeholder="input food....">
                     <input type="button" value="search" id="submit">
                 </form>
@@ -24,10 +24,14 @@ export default class View {
     }
     
     renderResults(list, parentElement) {
+
         for (let i = 0; i < list.length; i++) {
             this.renderItems(list[i], parentElement);
         }
+        console.log('results');
+        return;
     }
+
     renderItems(item, parentElement) {
         //render a list of searched Items
         let div = document.createElement('div');
@@ -43,13 +47,13 @@ export default class View {
     }
     renderDetails(item) {
         //render details of searched Items
-        // let ul = document.createElement('ul');
-        // let list = []
-        // for (let i = 1; i < 20; i++) {
-        //     if (`item.strIngredient${i}` != null ||`item.strIngredient${i}` != " ") {
-        //         list.push(`<li class="item.strIngredient${i}">item.strMeasure${i} item.strIngredient${i}</li>`)
-        //     }
-        // };
+        let ul = document.createElement('ul');
+        let list = []
+        for (let i = 1; i < 20; i++) {
+            if (`item.strIngredient${i}` != null ||`item.strIngredient${i}` != " ") {
+                list.push(`<li class="item.strIngredient${i}">item.strMeasure${i} item.strIngredient${i}</li>`)
+            }
+        };
         console.log("Details View");
         let detailsDiv = document.getElementById('view-container');
         detailsDiv.innerHTML = "";

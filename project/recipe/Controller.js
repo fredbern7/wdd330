@@ -11,12 +11,12 @@ export default class Controller {
   //search and preview the result
   homepage() {
     this.View.renderHomePage(this.mainElement);
+    console.log('1');
     this.menu();
+    console.log('2');
     let parentElement = document.getElementById("results");
-    this.search(parentElement);
+    this.formListener(parentElement);
     this.random(parentElement);
-    //this.nav();
-    return;
   }
   menu() {
     let menu = document.getElementById('menu');
@@ -32,43 +32,46 @@ export default class Controller {
     })
   }
 
-  search(parentElement) {
-    let input = document.getElementById('input').value;
-    let submit = document.getElementById('submit');
-    submit.addEventListener('click', () => {
-      parentElement.innerHTML = "";
-      document.getElementById('div-description').innerHTML = "";
-      document.getElementById('div-description').innerHTML = `
-    <p class = "description">Search result... click one to view the details</p>
-    `;
-      this.Model.search(input)
-      .then((data) => {
-        console.log(data);
-        let list = data.meals;
-        console.log(list);
-        for (let i = 0; i < list.length; i++) {
-          this.View.renderItems(list[i], parentElement);
-        }
-      })
-      document.getElementById('input').value="";
-    })
-    return;
-  }
-
   // random pick button and pick random
   random(parentElement) {
     document.getElementById('div-description').innerHTML = `
     <p class = "description">This is a random selection... please search if your choice is not here...</p>
     `;
-    this.Model.random()
+    let promise = this.Model.random()
+    this.output(promise, parentElement)
+  }
+
+  formListener(parentElement) {
+    let submit = document.getElementById('submit');
+    submit.addEventListener('click', () => {
+      let input = document.getElementById('input').value;
+      if (input != "") {
+        parentElement.innerHTML = "";
+        document.getElementById('div-description').innerHTML = "";
+        document.getElementById('div-description').innerHTML = `<p class = "description">Search result... click one to view the details</p>`;
+        let promise = this.Model.search(input);
+        this.output(promise, parentElement);
+        document.getElementById('input').value="";
+      }
+    })
+    
+  }
+
+  output(promise, parentElement, list) {
+    promise
     .then((data) => {
       let list = data.meals;
       this.View.renderResults(list, parentElement)
+      console.log('log1')
     })
-    return;
+    setTimeout(() => {
+      this.addListener(parentElement)
+    }, 3000);
   }
 
   showOneItem(id, parentElement) {
+    document.getElementById("form").classList.add('hide');
+    this.formListener(parentElement);
     console.log('show one item');
     document.getElementById('div-description').innerHTML = `
     <p class = "description">If you like it add it to you recipe list...</p>
@@ -82,20 +85,10 @@ export default class Controller {
     })
   }
 
-  // removeEmptyLi() {
-  //   let li = document.getElementById('ingredi');
-  //   let list = Array.from(li.children);
-  //   console.log(list)
-  //   let newList = []//JSON.stringify([])
-  //   list.forEach((item) => {
-  //     console.log(item.value)
-  //   })
-  // }
-
-
-  async addListener(parentElement) {
+  addListener(parentElement) {
+    console.log('listener added...')
     // for the stretch you will need to attach a listener to each of the listed hikes to watch for a touchend. 
-    await parentElement;
+    parentElement;
     const childrenArray = Array.from(parentElement.children);
     childrenArray.forEach(child => {
       child.children[1].addEventListener('click', e => {

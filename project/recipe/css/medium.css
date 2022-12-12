@@ -66,6 +66,57 @@
         inline-size:250px;
         overflow-wrap: break-word;
     }
+
+    .back-add {
+        position: relative;
+        z-index: 1;
+        padding-left: 30px;
+        width: 100%;
+        margin-bottom: -125px;
+        
+    }
+    .back, .add {
+        border: none;
+        border-radius: 5px;
+        height: 35px;
+        width: 75px;
+        background-color:#f9b466;
+        color: rgb(5, 5, 5);
+        border:none;
+        border-radius:10px;
+        box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+        font-style: italic;
+        font-weight: 500;
+    }
+    .food {
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgb(198, 194, 202);
+    }
+    .ingredient {
+        padding: 10px;
+    }
+    .ingredient li {
+        list-style: none;
+    }
+    .foodAndIngredients {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        margin-top: 60px;
+        padding: 10px;
+        width: 100%;
+        z-index: 0px;
+        font-style: italic;
+        font-weight: 500;
+    }
+    
+    .instructions {
+        padding: 10px;
+        width: 100%;
+        font-style: italic;
+        font-weight: 500;
+    }
+    
 }
 
 /*end medium */

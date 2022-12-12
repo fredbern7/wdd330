@@ -52,7 +52,6 @@ export default class Controller {
       })
       document.getElementById('input').value="";
     })
-    setTimeout(() => this.addListener(parentElement), 3000)
     return;
   }
 
@@ -64,20 +63,16 @@ export default class Controller {
     this.Model.random()
     .then((data) => {
       let list = data.meals;
-      for (let i = 0; i < list.length; i++) {
-       this.View.renderItems(list[i], parentElement);
-      }
+      this.View.renderResults(list, parentElement)
     })
-    setTimeout(() => this.addListener(parentElement), 3000)
-    
     return;
   }
 
   showOneItem(id, parentElement) {
+    console.log('show one item');
     document.getElementById('div-description').innerHTML = `
     <p class = "description">If you like it add it to you recipe list...</p>
     `;
-    parentElement.innerHTML = "";
     this.Model.oneItem(id)
     .then((data) => {
       console.log(data)
@@ -85,7 +80,6 @@ export default class Controller {
       console.log(item);
       this.View.renderDetails(item, parentElement)
     })
-    setTimeout(() => this.removeEmptyLi(), 5000)
   }
 
   // removeEmptyLi() {

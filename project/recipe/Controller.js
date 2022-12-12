@@ -13,7 +13,9 @@ export default class Controller {
     this.View.renderHomePage(this.mainElement);
     this.menu();
     let parentElement = document.getElementById("results");
+    this.search(parentElement);
     this.random(parentElement);
+    //this.nav();
     return;
   }
   menu() {
@@ -22,7 +24,16 @@ export default class Controller {
         document.getElementById("primaryNav").classList.toggle("hide");
     })
   }
-  form(parentElement) {
+  nav() {
+    let navElementsArray = Array.from(document.getElementById('primaryNav').children);
+    console.log(navElementsArray);
+    navElementsArray.addEventListener('click', e => {
+      console.log(e.currentTarget.dataset.name);
+    })
+  }
+
+  search(parentElement) {
+    let input = document.getElementById('input').value;
     let submit = document.getElementById('submit');
     submit.addEventListener('click', () => {
       parentElement.innerHTML = "";
@@ -30,8 +41,9 @@ export default class Controller {
       document.getElementById('div-description').innerHTML = `
     <p class = "description">Search result... click one to view the details</p>
     `;
-      this.Model.search()
+      this.Model.search(input)
       .then((data) => {
+        console.log(data);
         let list = data.meals;
         console.log(list);
         for (let i = 0; i < list.length; i++) {
@@ -40,6 +52,7 @@ export default class Controller {
       })
       document.getElementById('input').value="";
     })
+    setTimeout(() => this.addListener(parentElement), 3000)
     return;
   }
 
@@ -48,14 +61,14 @@ export default class Controller {
     document.getElementById('div-description').innerHTML = `
     <p class = "description">This is a random selection... please search if your choice is not here...</p>
     `;
-    this.Model.fetching()
+    this.Model.random()
     .then((data) => {
       let list = data.meals;
       for (let i = 0; i < list.length; i++) {
        this.View.renderItems(list[i], parentElement);
       }
     })
-    setTimeout(() => this.addListener(parentElement), 5000)
+    setTimeout(() => this.addListener(parentElement), 3000)
     
     return;
   }
@@ -75,15 +88,15 @@ export default class Controller {
     setTimeout(() => this.removeEmptyLi(), 5000)
   }
 
-  removeEmptyLi() {
-    let li = document.getElementById('ingredi');
-    let list = Array.from(li.children);
-    console.log(list)
-    let newList = []//JSON.stringify([])
-    list.forEach((item) => {
-      console.log(item.value)
-    })
-  }
+  // removeEmptyLi() {
+  //   let li = document.getElementById('ingredi');
+  //   let list = Array.from(li.children);
+  //   console.log(list)
+  //   let newList = []//JSON.stringify([])
+  //   list.forEach((item) => {
+  //     console.log(item.value)
+  //   })
+  // }
 
 
   async addListener(parentElement) {

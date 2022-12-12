@@ -9,7 +9,7 @@ export default class Model {
   constructor() {
     // We need a constructor...but in this case it isn't doing much
   }
-  async fetching() {
+  async random() {
     const url = `https://www.themealdb.com/api/json/v2/9973533/randomselection.php`;
     return fetch(url)
         .then((response) => {
@@ -17,8 +17,7 @@ export default class Model {
         })
   }
 
-  async search() {
-    let input = document.getElementById('input').value;
+  async search(input) {
     const url = `https://www.themealdb.com/api/json/v2/9973533/search.php?s=${input}`;
     return fetch(url)
         .then((response) => {
@@ -33,6 +32,18 @@ export default class Model {
         return response.json();
     })
   }
+
+
+
+
+
+
+
+
+
+
+
+
   getSavedItem() {
     // should return a list of all the in the LocalStorage.
     return LocalList;

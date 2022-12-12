@@ -7,7 +7,6 @@
     <title>Recipe App</title>
 
     <script src="index.js" type="module" defer></script>
-    <script src="menu.js" defer></script>
     <link href="css/normalize.css" rel="stylesheet">
     <link href="css/small.css" rel="stylesheet">
     <link href="css/medium.css" rel="stylesheet">
@@ -20,12 +19,16 @@
             <!--Added clearfix prevents other items from collaping with the nav-->
             <button id="menu">&#9776</button>
             <ul class="hide" id="primaryNav">
-                <li class="a" id="about">About</li>
-                <li class="a" id="myRecipe">My Recipes</li>
-                <li class="a" id="viewItems">Viewed Item</li>
-                <li class="a" id="searchedItems">Searched Item</li>
+                <li class="a" id="about" data-name="about">About</li>
+                <li class="a" id="myRecipe" data-name="myRecipe">My Recipes</li>
+                <li class="a" id="viewedItems" data-name="viewedItems">Viewed Item</li>
+                <li class="a" id="searchedItems" data-name="about">Searched Item</li>
             </ul>
         </nav>
+        <!-- <input type="button" class="a" id="about" data-name="about" value="About">
+        <input type="button" class="a" id="myRecipe" data-name="myRecipe" value="My Recipes">
+        <input type="button" class="a" id="viewedItems" data-name="viewedItems" value="Viewed Item">
+        <input type="button" class="a" id="searchedItems" data-name="searchedItems" value="Searched Item"> -->
     </div>
         <div id="main" class="main">
         </div>

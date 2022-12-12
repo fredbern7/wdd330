@@ -8,7 +8,7 @@ export default class View {
             <main>
                 <form class="hide">
                     <input type="text" id="input" placeholder="input food....">
-                    <input type="button" value="search" id="submit">
+                    <input type="button" value="search" id="submit" class="btn:diabled">
                 </form>
                 <div class="div-description" id="div-description"></div>
                 <div class="results" id="results">
@@ -47,7 +47,7 @@ export default class View {
         div.classList.add('details-div');
         div.innerHTML = `
         <div class="back-add">
-            <input class="back" type="button" value="HomePage" data-name="${item.idMeal}">
+            <input class="back" type="button" value="Back" data-name="${item.idMeal}">
             <input class="add" type="button" value="Add" data-name="${item.idMeal}">
         </div>
         <div class="food-instruction">

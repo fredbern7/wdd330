@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="https://www.themealdb.com/images/ingredients/Lime-Small.png" alt="">
+    <script>
+        let ingred = []
+        //let list = JSON.stringify(ingred)
+        for (let j = 1; j < 20; j++) {
+            let item = `<div class="imgSmallDiv"><img class="img" src="www.themealdb.com//ingredients/Lime-Small.png" alt="S{strIngredient${j}}"></div>`;
+            ingred.push(item);
+        }
+        console.log(ingred)
+        let newList = []
+        ingred.forEach((item) => {
+            newList.push(item);
+        })
+        console.log(newList)
+    </script>
+</body>
+</html>

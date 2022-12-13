@@ -54,7 +54,6 @@ export default class Controller {
     })
     
   }
-f
   output(promise, parentElement) {
     promise
     .then((data) => {
@@ -70,8 +69,6 @@ f
   }
 
   showOneItem(id, parentElement) {
-    document.getElementById("form").classList.add('hide');
-    this.formListener(parentElement);
     console.log('show one item');
     document.getElementById('div-description').innerHTML = `
     <p class = "description">If you like it add it to you recipe list...</p>

@@ -8,8 +8,6 @@ export default class View {
             this.renderItems(list[i], parentElement);
         }
         console.log('results');
-        console.log(document.getElementById('container').remove);
-        return;
     }
 
     renderItems(item, parentElement) {
@@ -21,13 +19,10 @@ export default class View {
         <p>${item.strMeal}</p>
         `;
         parentElement.appendChild(div);
-        return;
     }
-    renderDetails(item) {
-        console.log("Details View");
-        let detailsDiv = document.getElementById('view-container');
-        detailsDiv.innerHTML = "";
-        detailsDiv.innerHTML = `
+    renderDetails(item, parentElement) {
+        parentElement.innerHTML = "";
+        parentElement.innerHTML = `
 
         <div class="foodAndIngredients">
             <div class="food">
@@ -66,7 +61,6 @@ export default class View {
             <p>${item.strInstructions}</p>
         </div>
         `;
-        return;
     }
     renderLocalList() {
         //render local List Items

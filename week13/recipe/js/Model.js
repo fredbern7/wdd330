@@ -11,23 +11,18 @@ export default class Model {
   }
   async random() {
     const url = `https://www.themealdb.com/api/json/v2/9973533/randomselection.php`;
-    let fetchData = await fetch(url);
-    if (!fetchData.ok) {
-      throw new Error('oopsss...')
-    } else {
-      return fetchData.json();
-    }
+    return fetch(url)
+        .then((response) => {
+            return response.json();
+        })
   }
-
 
   async search(input) {
     const url = `https://www.themealdb.com/api/json/v2/9973533/search.php?s=${input}`;
-    let fetchData = await fetch(url);
-    if (!fetchData.ok) {
-      throw new Error('oopsss...')
-    } else {
-      return fetchData.json();
-    }
+    return fetch(url)
+        .then((response) => {
+            return response.json();
+        })
   }
 
   async oneItem(id) {
@@ -37,17 +32,6 @@ export default class Model {
         return response.json();
       })
   }
-
-
-
-
-
-
-
-
-
-
-
 
   getSavedItem() {
     // should return a list of all the in the LocalStorage.

@@ -3,7 +3,6 @@ html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
-
 /*----------- apply a natural box layout model to all elements --------------*/
 * {
     -moz-box-sizing: border-box;
@@ -165,29 +164,28 @@ form>input {
     color: rgb(214, 253, 179);
 }
 
-.back-add {
-    position: relative;
-    z-index: 1;
-    padding-left: 30px;
-    width: 100%;
-    margin-bottom: -125px;
-    
+.buttonDiv{
+    display: flex;
+    grid-template-columns: 1fr 1fr; 
+    justify-content: center;
+}
+.back {
+    color: aqua;
 }
 .back, .add {
     border: none;
     border-radius: 5px;
-    height: 35px;
-    width: 75px;
-    background-color:#f9b466;
+    height: 30px;
+    width: 100px;
     color: rgb(5, 5, 5);
     border:none;
-    border-radius:10px;
     box-shadow: 0px 0px 2px 2px rgb(0,0,0);
     font-style: italic;
     font-weight: 500;
 }
 .food {
-    padding: 10px;
+    margin: 0 auto;
+    padding:0 10px;
     border-radius: 10px;
     background-color: rgb(198, 194, 202);
 }
@@ -202,7 +200,7 @@ form>input {
     list-style:circle;
 }
 .foodAndIngredients {
-    margin-top: 60px;
+    margin-top: 10px;
     padding: 10px;
     width: 100%;
     z-index: 0px;
@@ -236,6 +234,12 @@ form>input {
 }
 .instructions p {
     padding: 0 10px;
+}
+
+.buttonDiv {
+    display: flex;
+    gap: 20px;
+    margin: 0 auto;
 }
 
 

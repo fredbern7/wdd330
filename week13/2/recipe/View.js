@@ -5,12 +5,12 @@ export default class View {
     renderHomePage(mainElement) {}
 
     renderResults(list, parentElement) {
-
+        document.getElementById('view-container').innerHTML = "";
+        let detailsDiv = document.getElementById('view-container');
         for (let i = 0; i < list.length; i++) {
-            this.renderItems(list[i], parentElement);
+            this.renderItems(list[i], parentElement, detailsDiv);
         }
-        console.log('results');
-        console.log(document.getElementById('container').remove);
+        detailsDiv.appendChild(parentElement)
         return;
     }
 
@@ -27,8 +27,6 @@ export default class View {
 
     }
     renderDetails(item) {
-        console.log("Details View");
-        let detailsDiv = document.getElementById('view-container');
         let list = [
                     item.strIngredient1, 
                     item.strIngredient2, 
@@ -73,7 +71,6 @@ export default class View {
             item.strMeasure19,
             item.strMeasure20
         ];
-        console.log(list[19]);
         let newList = []
         for (let i = 0; i < list.length; i++) {
             if (list[i] != '') {
@@ -89,8 +86,20 @@ export default class View {
                 imgList.push(imageName);
             }
         }
+        let detailsDiv = document.getElementById('view-container');
         detailsDiv.innerHTML = "";
 
+        let buttonDiv = document.createElement('div');
+        buttonDiv.classList.add('buttonDiv');
+        let back = document.createElement('button');
+        back.classList.add('back');
+        back.innerText = "back";
+        let add = document.createElement('button');
+        add.classList.add('add');
+        add.innerText = "add";
+        buttonDiv.appendChild(back);
+        buttonDiv.appendChild(add);
+        detailsDiv.appendChild(buttonDiv);
         let foodAndIngredients = document.createElement('div');
         foodAndIngredients.classList.add('foodAndIngredients');
         let food = document.createElement('div');

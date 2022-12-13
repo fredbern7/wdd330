@@ -68,7 +68,7 @@ export default class Controller {
     }, 3000);
   }
 
-  showOneItem(id, parentElement) {
+  showOneItem(id) {
     console.log('show one item');
     document.getElementById('div-description').innerHTML = `
     <p class = "description">If you like it add it to you recipe list...</p>
@@ -78,15 +78,8 @@ export default class Controller {
       console.log(data)
       let item = data.meals[0];
       console.log(item);
-      this.View.renderDetails(item, parentElement)
+      this.View.renderDetails(item)
     })
-    setTimeout(() => {
-      const buttonArray = Array.from(document.getElementById('button-div').children)
-      childrenArray.forEach('click', e => {
-        let target = e.currentTarget.dataset.name;
-        console.log(target);
-      })
-    }, 3000);
   }
 
   addListener(parentElement) {

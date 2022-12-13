@@ -40,6 +40,7 @@ export default class Controller {
   }
 
   formListener(parentElement) {
+    let bButton = ['back','add'];
     let submit = document.getElementById('submit');
     submit.addEventListener('click', () => {
       let input = document.getElementById('input').value;
@@ -48,13 +49,14 @@ export default class Controller {
         document.getElementById('div-description').innerHTML = "";
         document.getElementById('div-description').innerHTML = `<p class = "description">Search result... click one to view the details</p>`;
         let promise = this.Model.search(input);
-        this.output(promise, parentElement);
+        this.output(promise, parentElement, bButton);
         document.getElementById('input').value="";
       }
     })
     
   }
-  output(promise, parentElement) {
+
+  output(promise, parentElement, bButton) {
     promise
     .then((data) => {
       console.log(data);
@@ -77,8 +79,39 @@ export default class Controller {
     .then((data) => {
       console.log(data)
       let item = data.meals[0];
-      console.log(item);
       this.View.renderDetails(item)
+    })
+
+    setTimeout(() => {
+      this.Model.oneItem(id)
+      .then((data) => {
+        console.log(data)
+        let item = data.meals[0];
+        this.buttonListener(item);
+      })
+    }, 6000);
+  }
+
+  buttonListener(item) {
+    console.log('work')
+    let divButton = Array.from(document.getElementById('buttonDiv').children);
+    console.log(divButton);
+    let back = divButton[0];
+    let add = divButton[1];
+    console.log('add');
+    back.addEventListener('click', () => {
+      document.getElementById('results').classList.add('results');
+      document.getElementById('results').classList.remove('hide');
+      document.getElementById('buttonDiv').remove();
+      document.getElementById('detailsSecond').remove();
+    })
+    add.addEventListener('click', () => {
+      console.log(item);
+      this.Model.saveItem(item);
+      document.getElementById('results').classList.add('results');
+      document.getElementById('results').classList.remove('hide');
+      document.getElementById('buttonDiv').remove();
+      document.getElementById('detailsSecond').remove();
     })
   }
 

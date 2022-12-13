@@ -33,17 +33,6 @@ export default class Model {
     })
   }
 
-
-
-
-
-
-
-
-
-
-
-
   getSavedItem() {
     // should return a list of all the in the LocalStorage.
     return LocalList;
@@ -56,7 +45,7 @@ export default class Model {
 
   }
   StoredList() {
-    let storedListString = localStorage.getItem(COMMENT_LIST)
+    let storedListString = localStorage.getItem(MY_LIST)
     let storedList = []
     if (storedListString) {
         storedList = JSON.parse(storedListString)
@@ -77,9 +66,9 @@ export default class Model {
     }    
     return comment;
     }
-  addComment(comment) {
-        let commentsList = this.CommentList();
-        commentsList.push(comment);
-        localStorage.setItem(COMMENT_LIST, JSON.stringify(commentsList))
+  saveItem(item) {
+        let myList = this.StoredList();
+        myList.push(item);
+        localStorage.setItem(MY_LIST, JSON.stringify(myList));
   }
 }

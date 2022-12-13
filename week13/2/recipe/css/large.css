@@ -6,16 +6,21 @@
         max-width: 70rem;
         padding: 0 0;
     }
-    
+    /* body {
+        width: 100%;
+        font-size: 14px;
+        font-family: 'Roboto Slab', serif;
+    } */
     /* ---------- nav ---------- */
     nav {
+        font-size: 18px;
+        font-family: 'Roboto Slab', serif;
         max-width: 75rem;
         margin: 0 auto;
     }
     .navBtn {
         padding: .4rem 1rem;
+        width: 170px;
     }
-    h1 {
-        font-size: 3rem;
-    }
+
     }/*end large */

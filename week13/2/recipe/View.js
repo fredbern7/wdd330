@@ -86,16 +86,22 @@ export default class View {
                 imgList.push(imageName);
             }
         }
+        document.getElementById('results').classList.remove('results');
+        document.getElementById('results').classList.add('hide');
         let detailsDiv = document.getElementById('view-container');
-        detailsDiv.innerHTML = "";
-
+        let detailsSecond = document.createElement('div');
+        detailsSecond.classList.add('detailsSecond');
+        detailsSecond.setAttribute('id', 'detailsSecond');
         let buttonDiv = document.createElement('div');
         buttonDiv.classList.add('buttonDiv');
+        buttonDiv.setAttribute('id', 'buttonDiv');
         let back = document.createElement('button');
         back.classList.add('back');
+        back.setAttribute('data-name', 'back');
         back.innerText = "back";
         let add = document.createElement('button');
         add.classList.add('add');
+        add.setAttribute('data-name','add');
         add.innerText = "add";
         buttonDiv.appendChild(back);
         buttonDiv.appendChild(add);
@@ -107,6 +113,8 @@ export default class View {
         food.innerHTML = `
             <img class="img" src="${item.strMealThumb}" alt="${item.strMeal}">
             <h2>${item.strMeal}</h2>
+            <p>Food Category: ${item.strCategory}</p>
+            <p>Style:  ${item.strArea}</p>
             `;
         let ingredient = document.createElement('div');
         ingredient.classList.add('ingredient');
@@ -148,8 +156,9 @@ export default class View {
         ingredientsContainer.appendChild(h3);
         ingredientsContainer.appendChild(ul);
         ingredient.appendChild(ingredientsImages);
-        detailsDiv.appendChild(foodAndIngredients);
-        detailsDiv.appendChild(instructions);
+        detailsSecond.appendChild(foodAndIngredients);
+        detailsSecond.appendChild(instructions);
+        detailsDiv.appendChild(detailsSecond);
         return;
     }
     renderLocalList() {

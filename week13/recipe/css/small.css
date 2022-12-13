@@ -4,6 +4,9 @@ html {
     -ms-text-size-adjust: 100%;
 }
 
+div {
+    border: red solid 1px;
+}
 
 /*----------- apply a natural box layout model to all elements --------------*/
 * {
@@ -47,14 +50,18 @@ nav div {
     display: block;
     margin: 0 auto;
     width: 100%;
-    padding: 0 10px;
+    padding: 0;
     margin: 0;
 }
-
+.navBtnContainer {
+    margin: 0;
+    padding: 0;
+    width: 95%;
+}
 .navBtn {
     background-color: transparent;
     margin: 0 10px;
-    width: 90%;
+    width: 100%;
     padding: .8rem 2%;
     text-decoration: none;
     color: #000;

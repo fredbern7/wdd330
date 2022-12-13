@@ -11,31 +11,31 @@ export default class Model {
   }
   async random() {
     const url = `https://www.themealdb.com/api/json/v2/9973533/randomselection.php`;
-    
-    return fetch(url)
-        .then((response) => {
-          console.log(response.ok)
-          console.log(response.status);
-          // if (response.ok)
-          //   return response.json();
-        })
-        .catch(e => console.log(e))
+    let fetchData = await fetch(url);
+    if (!fetchData.ok) {
+      throw new Error('oopsss...')
+    } else {
+      return fetchData.json();
+    }
   }
+
 
   async search(input) {
     const url = `https://www.themealdb.com/api/json/v2/9973533/search.php?s=${input}`;
-    return fetch(url)
-        .then((response) => {
-            return response.json();
-        })
+    let fetchData = await fetch(url);
+    if (!fetchData.ok) {
+      throw new Error('oopsss...')
+    } else {
+      return fetchData.json();
+    }
   }
 
   async oneItem(id) {
     const url = `https://www.themealdb.com/api/json/v2/9973533/lookup.php?i=${id}`;
     return fetch(url)
-    .then((response) => {
+      .then((response) => {
         return response.json();
-    })
+      })
   }
 
 
@@ -64,7 +64,7 @@ export default class Model {
     let storedListString = localStorage.getItem(COMMENT_LIST)
     let storedList = []
     if (storedListString) {
-        storedList = JSON.parse(storedListString)
+      storedList = JSON.parse(storedListString)
     }
     return storedList;
   }
@@ -76,15 +76,15 @@ export default class Model {
     let List = this.CommentList();
     let comment = [];
     for (let i = 0; i < List.length; i++) {
-        if (List[i].name == name) {
-            comment.push(List[i]);
-        }
-    }    
-    return comment;
+      if (List[i].name == name) {
+        comment.push(List[i]);
+      }
     }
+    return comment;
+  }
   addComment(comment) {
-        let commentsList = this.CommentList();
-        commentsList.push(comment);
-        localStorage.setItem(COMMENT_LIST, JSON.stringify(commentsList))
+    let commentsList = this.CommentList();
+    commentsList.push(comment);
+    localStorage.setItem(COMMENT_LIST, JSON.stringify(commentsList))
   }
 }

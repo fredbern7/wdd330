@@ -7,63 +7,72 @@ export default class Controller {
     this.Model = new Model();
     this.View = new View();
   }
-  
-  //search and preview the result
-  homepage() {
-    this.View.renderHomePage(this.mainElement);
-    console.log('1');
-    this.menu();
-    console.log('2');
-    let parentElement = document.getElementById("results");
-    this.formListener(parentElement);
-    this.random(parentElement);
+  //
+  loadPage() {
+    this.form()
+    let parentElement = this.mainElement;
+    if(navigator.onLine) {
+      this.random(parentElement);
+    } else {
+      alert("Oops! You're offline. Please check your network connection...");
+      document.getElementById('message').appendChild(document.createElement('p').innerText = 'No internet connection!');
+    }
+    this.navBtn()
+    if(window.innerWidth > '560px') {
+      let hideMenu = document.getElementById('primaryNav');
+      hideMenu.classList.remove('hide');
+    } else {
+      hideMenu.classList.remove('hide');
+    }
   }
-  menu() {
-    let menu = document.getElementById('menu');
-    menu.addEventListener('click', () => {
-        document.getElementById("primaryNav").classList.toggle("hide");
-    })
-  }
-  nav() {
-    let navElementsArray = Array.from(document.getElementById('primaryNav').children);
-    console.log(navElementsArray);
-    navElementsArray.addEventListener('click', e => {
-      console.log(e.currentTarget.dataset.name);
-    })
-  }
-
-  // random pick button and pick random
   random(parentElement) {
-    document.getElementById('div-description').innerHTML = `
+    let promise = this.Model.random();
+    promise.then((data) =>{
+      console.log(data);
+    })
+    console.log(promise);
+    document.getElementById('message').innerHTML = `
     <p class = "description">This is a random selection... please search if your choice is not here...</p>
     `;
-    let promise = this.Model.random()
     this.output(promise, parentElement)
   }
+  navBtn() {
+    let menu = document.getElementById('menu');
+    menu.addEventListener('click', () => {
+      document.getElementById("primaryNav").classList.toggle("hide");
+    })
+    let navBtn = ['about', 'myRecipe', 'viewedItems', 'searchedItems']
+    navBtn.forEach((btnId) => {
+      document.getElementById(btnId).addEventListener('click', () => {
+        console.log(btnId);
+        if(window.innerWidth > '560px') {
+          console.log(window.innerWidth);
+          document.getElementById("primaryNav").classList.toggle("");
+        }else {
+          document.getElementById("primaryNav").classList.toggle("hide");
+        }
+      })
+    })
+  }
 
-  formListener(parentElement) {
-    let submit = document.getElementById('submit');
+  form(parentElement) {
+    let submit = document.getElementById('submit');    
     submit.addEventListener('click', () => {
-      let input = document.getElementById('input').value;
-      if (input != "") {
-        parentElement.innerHTML = "";
-        document.getElementById('div-description').innerHTML = "";
-        document.getElementById('div-description').innerHTML = `<p class = "description">Search result... click one to view the details</p>`;
-        let promise = this.Model.search(input);
-        this.output(promise, parentElement);
-        document.getElementById('input').value="";
+      let input = document.getElementById("input").required;
+      if(!input) {
+        alert('no input')
       }
     })
-    
+
   }
 
   output(promise, parentElement, list) {
     promise
-    .then((data) => {
-      let list = data.meals;
-      this.View.renderResults(list, parentElement)
-      console.log('log1')
-    })
+      .then((data) => {
+        let list = data.meals;
+        this.View.renderResults(list, parentElement)
+        console.log('log1')
+      })
     setTimeout(() => {
       this.addListener(parentElement)
     }, 3000);
@@ -73,16 +82,16 @@ export default class Controller {
     document.getElementById("form").classList.add('hide');
     this.formListener(parentElement);
     console.log('show one item');
-    document.getElementById('div-description').innerHTML = `
+    document.getElementById('message').innerHTML = `
     <p class = "description">If you like it add it to you recipe list...</p>
     `;
     this.Model.oneItem(id)
-    .then((data) => {
-      console.log(data)
-      let item = data.meals[0];
-      console.log(item);
-      this.View.renderDetails(item, parentElement)
-    })
+      .then((data) => {
+        console.log(data)
+        let item = data.meals[0];
+        console.log(item);
+        this.View.renderDetails(item, parentElement)
+      })
     setTimeout(() => {
       const buttonArray = Array.from(document.getElementById('button-div').children)
       childrenArray.forEach('click', e => {

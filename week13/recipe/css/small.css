@@ -26,7 +26,7 @@ h1 {
     background-color: none;
     margin: 0;
 }
-nav button {
+nav #menu {
     margin: .2rem 1%;
     margin-top: .6rem;
     margin-left: .6rem;
@@ -43,20 +43,23 @@ nav {
     font-family: sans-serif;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
+nav div {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 10px;
     margin: 0;
 }
 
-.a {
+.navBtn {
     background-color: transparent;
     margin: 0 10px;
-    display: block; /*make the button clikable, make the anger<a> wider*/
-    padding: .8rem 2%; /*make the button clikable bigger so they can touch by the finger */
-    text-decoration: none; /*remove the underline*/
-    color: #000; /*remove the blue color*/
-    border-top: 1px solid gray; /*add border to the top with 3% of color black #000*/
+    width: 90%;
+    padding: .8rem 2%;
+    text-decoration: none;
+    color: #000;
+    border: none;
+    border-top: 1px solid gray;
 }
 
 .active {
@@ -64,14 +67,15 @@ nav ul {
     color: #fff;
 } /*use way finding by controling the active class*/
 
-.a:hover {
+.navBtn:hover {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-nav ul.hide {
+nav div.hide {
     display: none;
 }
 
+/*nav ends here*/
 .container {
     width: 100%;
     font-size: 14px;
@@ -103,12 +107,12 @@ form>input {
     margin: 0 auto;
     width: 100%;
 }
-.div-description {
+.message {
     margin-bottom: 40px;
     width: 100%;
     padding: 10px;
 }
-.div-description>p {
+.message>p {
     color: green;
     text-align: center;
     font-style: italic;

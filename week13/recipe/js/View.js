@@ -2,34 +2,8 @@
 
 export default class View {
     constructor() {
-    }
-    renderHomePage(mainElement) {
-        return mainElement.innerHTML = `
-            <div id ="container">
-                <form id="form">
-                    <input type="text" id="input" placeholder="input food....">
-                    <input type="button" value="search" id="submit">
-                </form>
-
-                <div class="div-description" id="div-description">
-                </div>
-
-                <div class="view-container" id="view-container">
-
-                <div class="results" id="results">
-                </div>
-
-                </div>
-
-                <div class="storeFoods" id="storeFoods">
-                    
-                </div>
-            <div id ="container">
-        ` 
-    }
-    
+    }   
     renderResults(list, parentElement) {
-
         for (let i = 0; i < list.length; i++) {
             this.renderItems(list[i], parentElement);
         }
@@ -48,7 +22,6 @@ export default class View {
         `;
         parentElement.appendChild(div);
         return;
-
     }
     renderDetails(item) {
         console.log("Details View");

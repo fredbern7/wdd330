@@ -34,15 +34,21 @@ export default class Model {
   }
 
 
-  getSaveItemName(name) {
-    // filter the LocalItems for the record identified by itemName and return it
-    return LocalList.find(item => item.name === name);
-  }
-  deleteItem() {
+  // getSaveItemName(name) {
+  //   // filter the LocalItems for the record identified by itemName and return it
+  //   return LocalList.find(item => item.name === name);
+  // }
+  // deleteItem() {
 
+  // }
+  
+  removeItem(item) {
+    const myList = this.StoredList();
+    let updatedList = myList.filter(one => one.idMeal != item.idMeal);
+    localStorage.setItem(MY_LIST, JSON.stringify(updatedList));
   }
+
   StoredList() {
-    console.log('Model:StoredList')
     let storedListString = localStorage.getItem(MY_LIST)
     let storedList = []
     if (storedListString) {
@@ -51,15 +57,12 @@ export default class Model {
     return storedList;
   }
 
+  getAllSavedItems() {
+    return this.storedList();
+  }
   saveItem(item) {
         let myList = this.StoredList();
         myList.push(item);
         localStorage.setItem(MY_LIST, JSON.stringify(myList));
-  }
-
-  removeItem(item) {
-    const myList = this.storedList();
-    let updatedList = myList.filter(one => one != item);
-    localStorage.setItem(MY_LIST, JSON.stringify(updatedList));
   }
 }

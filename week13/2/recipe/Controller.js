@@ -97,14 +97,22 @@ export default class Controller {
       if (input != "") {
         document.getElementById('results').classList.add('results');
         document.getElementById('results').classList.remove('hide');
-        document.getElementById('buttonDiv').remove();
-        document.getElementById('detailsSecond').remove();
+        
+        let buttonDiv = document.getElementById('buttonDiv');
+        if (buttonDiv) {
+          buttonDiv.remove()
+        }
+        let detailsSecond = document.getElementById('detailsSecond');
+        if (buttonDiv) {
+          detailsSecond.remove()
+        }
         parentElement.innerHTML = "";
         document.getElementById('div-description').innerHTML = "";
         document.getElementById('div-description').innerHTML = `<p class = "description">Search result... click one to view the details</p>`;
         let promise = this.Model.search(input);
         this.output(promise, parentElement);
       }
+      document.getElementById('input').value = "";
     })
     
   }
@@ -122,7 +130,7 @@ export default class Controller {
     })
     setTimeout(() => {
       this.addListener(parentElement, btnNames)
-    }, 2000);
+    }, 3000);
   }
 
   Storedoutput(promise, parentElement) {
@@ -131,7 +139,7 @@ export default class Controller {
     this.View.renderResults(list, parentElement)
     setTimeout(() => {
       this.addListener(parentElement, btnNames)
-    }, 2000);
+    }, 3000);
   }
 
   showOneItem(id, btnNames) {
@@ -154,36 +162,52 @@ export default class Controller {
         this.buttonListener(item, btnNames);
       })
       console.log('setTimeout')
-    }, 2000);
+    }, 3000);
+    setTimeout(() => {
+      this.Model.oneItem(id)
+      .then((data) => {
+        console.log(data)
+        let item = data.meals[0];
+        this.deleteItem(item, btnNames);
+      })
+      console.log('setTimeout')
+    }, 3000);
   }
 
+  deleteItem(item, btnNames){
+    let idTwo = `${btnNames[1]}`;
+    let buttonThree = document.getElementById(idTwo);
+    buttonThree.addEventListener('click', () => {
+      this.Model.removeItem(item);
+      this.clearDivs();
+    })
+  }
   buttonListener(item, btnNames) {
     console.log('work')
     let idOne = `${btnNames[0]}`;
     let idTwo = `${btnNames[1]}`;
-    console.log(idTwo);
     let buttonOne = document.getElementById(idOne);
     let buttonTwo = document.getElementById(idTwo);
-    console.log(buttonOne);
     buttonOne.addEventListener('click', () => {
-      this.clearDivs()
-    })
-
-    buttonTwo.addEventListener('click', () => {
-      if ( buttonTwo == 'add') {
-        this.Model.saveItem(item);
-      } else if (buttonTwo == 'delete') {
-        this.Model.deleteItem(item);
-      }
       this.clearDivs();
+    })
+    buttonTwo.addEventListener('click', () => {
+        this.Model.saveItem(item);
+        this.clearDivs();
     })
   }
 
   clearDivs() {
     document.getElementById('results').classList.add('results');
     document.getElementById('results').classList.remove('hide');
-    document.getElementById('buttonDiv').remove();
-    document.getElementById('detailsSecond').remove();
+    let buttonDiv = document.getElementById('buttonDiv');
+    if (buttonDiv) {
+      buttonDiv.remove()
+    }
+    let detailsSecond = document.getElementById('detailsSecond');
+    if (buttonDiv) {
+      detailsSecond.remove()
+    }
   }
 
 
@@ -205,39 +229,5 @@ export default class Controller {
   bycountry() {
 
   }
-
-  // getLocalList and render
-  localList() {
-
-  }
-  // previous search items
-  searchList() {
-
-  }
-  // previous viewed items
-  viewedList() {
-
-  }
-
-  //other functions**************
-
-  ViewResultOneItem() {
-
-  }
-
-  ViewLocalOneItem() {
-
-  }
-
-  saveItem() {
-
-  }
-
-  deleteItem() {
-
-
-  }
-
-
 
 }

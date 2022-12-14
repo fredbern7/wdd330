@@ -96,10 +96,12 @@ export default class View {
         buttonDiv.setAttribute('id', 'buttonDiv');
         let buttonOne = document.createElement('button');
         buttonOne.classList.add('back');
+        buttonOne.setAttribute('id', `${btnNames[0]}`);
         buttonOne.setAttribute('data-name', `${btnNames[0]}`);
         buttonOne.innerText = `${btnNames[0]}`;
         let buttonTwo = document.createElement('button');
         buttonTwo.classList.add('add');
+        buttonTwo.setAttribute('id',`${btnNames[1]}`);
         buttonTwo.setAttribute('data-name',`${btnNames[1]}`);
         buttonTwo.innerText = `${btnNames[1]}`;
         buttonDiv.appendChild(buttonOne);

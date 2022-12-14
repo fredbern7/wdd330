@@ -3,6 +3,7 @@ import View from './View.js';
 
 export default class Controller {
   constructor(mainId) {
+    console.log(mainId);
     this.mainElement = document.getElementById(mainId);
     this.Model = new Model();
     this.View = new View();
@@ -121,7 +122,7 @@ export default class Controller {
     })
     setTimeout(() => {
       this.addListener(parentElement, btnNames)
-    }, 3000);
+    }, 2000);
   }
 
   Storedoutput(promise, parentElement) {
@@ -130,7 +131,7 @@ export default class Controller {
     this.View.renderResults(list, parentElement)
     setTimeout(() => {
       this.addListener(parentElement, btnNames)
-    }, 3000);
+    }, 2000);
   }
 
   showOneItem(id, btnNames) {
@@ -153,7 +154,7 @@ export default class Controller {
         this.buttonListener(item, btnNames);
       })
       console.log('setTimeout')
-    }, 7000);
+    }, 2000);
   }
 
   buttonListener(item, btnNames) {

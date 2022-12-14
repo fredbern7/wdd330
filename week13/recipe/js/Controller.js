@@ -40,35 +40,38 @@ export default class Controller {
       console.log("viewedItems")
     })
   }
+
+  about() {
+
+  }
   viewMyRecipes(parentElement) {
     let promise = this.Model.StoredList();
     this.clearDivs()
     parentElement.innerHTML = "";
-    let message = `<p class = "description">Here are your saved items...</p>`;
+    let message;
+    if (promise) {
+      message = `<p class = "description">Here are your saved items...</p>`;
+    } else {
+      message = `<p class = "description">There is no item. Please, find your best recipe and save it to your list...</p>`;
+    }
     this.message(message)
     this.Storedoutput(promise, parentElement);
     this.toggle();
   }
 
-  message(message) {
-    document.getElementById('div-description').innerHTML = "";
-    document.getElementById('div-description').innerHTML = message;
-  }
-
-  toggle() {
-    if(window.innerWidth > '560px') {
-      console.log(window.innerWidth);
-      document.getElementById("primaryNav").classList.toggle("");
-    }else {
-      document.getElementById("primaryNav").classList.toggle("hide");
+  viewedHistory() {
+    let promise = this.Model.StoredList();
+    this.clearDivs()
+    parentElement.innerHTML = "";
+    let message;
+    if(promise = '') {
+      message = `There is no Viewed Item`;
+    }else{
+      message = `<p class = "description">Here are your saved items...</p>`;
     }
-  }
-  nav() {
-    let navElementsArray = Array.from(document.getElementById('primaryNav').children);
-    console.log(navElementsArray);
-    navElementsArray.addEventListener('click', e => {
-      console.log(e.currentTarget.dataset.name);
-    })
+    this.message(message)
+    this.Storedoutput(promise, parentElement);
+    this.toggle();
   }
 
   // random pick button and pick random
@@ -125,30 +128,28 @@ export default class Controller {
       this.addListener(parentElement, btnNames)
     }, 3000);
   }
+
   showOneItem(id, btnNames) {
-    document.getElementById('div-description').innerHTML = `
-    <p class = "description">If you like it add it to you recipe list...</p>
-    `;
+    let message = `<p class = "description">If you like it add it to you recipe list...</p>`;
+    this.menu(message);
     this.Model.oneItem(id)
     .then((data) => {
       let item = data.meals[0];
       this.View.renderDetails(item, btnNames);
     })
-    setTimeout(() => {
-      this.Model.oneItem(id)
-      .then((data) => {
+    this.addDeleteListener(id, btnNames);
+  }
+
+  addDeleteListener(id, btnNames) {
+    setTimeout(() => {this.Model.oneItem(id).then((data) => {
         let item = data.meals[0];
         this.buttonListener(item, btnNames);
       })
     }, 1000);
-    setTimeout(() => {
-      this.Model.oneItem(id)
-      .then((data) => {
-        console.log(data)
+    setTimeout(() => {this.Model.oneItem(id).then((data) => {
         let item = data.meals[0];
         this.deleteItem(item, btnNames);
-      })
-    }, 1000);
+      })}, 1000);
   }
 
   deleteItem(item, btnNames){
@@ -158,6 +159,8 @@ export default class Controller {
       buttonThree.addEventListener('click', () => {
       this.Model.removeItem(item);
       this.clearDivs();
+      document.getElementById
+      this.viewMyRecipes();
     })
     }
   }
@@ -167,31 +170,15 @@ export default class Controller {
     let buttonOne = document.getElementById(idOne);
     let buttonTwo = document.getElementById(idTwo);
     buttonOne.addEventListener('click', () => {
-      this.clearDivs();
+      this.viewMyRecipes();
     })
     buttonTwo.addEventListener('click', () => {
         if (idTwo == 'add') {
           this.Model.saveItem(item);
           this.clearDivs();
         }
-        
     })
   }
-
-  clearDivs() {
-    document.getElementById('results').classList.add('results');
-    document.getElementById('results').classList.remove('hide');
-    let buttonDiv = document.getElementById('buttonDiv');
-    if (buttonDiv) {
-      buttonDiv.remove()
-    }
-    let detailsSecond = document.getElementById('detailsSecond');
-    if (buttonDiv) {
-      detailsSecond.remove()
-    }
-  }
-
-
   addListener(parentElement, btnNames) {
     console.log('listener added...')
     // for the stretch you will need to attach a listener to each of the listed hikes to watch for a touchend. 
@@ -206,9 +193,38 @@ export default class Controller {
   }
 
 
-  //show list by country
-  bycountry() {
 
+  //other functions
+  message(message) {
+    document.getElementById('div-description').innerHTML = "";
+    document.getElementById('div-description').innerHTML = message;
   }
 
+  toggle() {
+    if(window.innerWidth > '560px') {
+      console.log(window.innerWidth);
+      document.getElementById("primaryNav").classList.toggle("");
+    }else {
+      document.getElementById("primaryNav").classList.toggle("hide");
+    }
+  }
+  nav() {
+    let navElementsArray = Array.from(document.getElementById('primaryNav').children);
+    console.log(navElementsArray);
+    navElementsArray.addEventListener('click', e => {
+      console.log(e.currentTarget.dataset.name);
+    })
+  }
+  clearDivs() {
+    document.getElementById('results').classList.add('results');
+    document.getElementById('results').classList.remove('hide');
+    let buttonDiv = document.getElementById('buttonDiv');
+    if (buttonDiv) {
+      buttonDiv.remove()
+    }
+    let detailsSecond = document.getElementById('detailsSecond');
+    if (buttonDiv) {
+      detailsSecond.remove()
+    }
+  }
 }

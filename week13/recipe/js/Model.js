@@ -31,10 +31,10 @@ export default class Model {
   }
 
   findItem(item) {
-    const item = this.StoredList.includes(item.idMeal);
-    return item;
+    const one = this.StoredList.includes(item.idMeal);
+    return one;
   }
-  
+
   saveItem(item) {
         let myList = this.StoredList();
         myList.push(item);
@@ -76,4 +76,16 @@ export default class Model {
     return viewedList;
   }
 
+  Visited() {
+    const visitedList = this.viewedList();
+    const count = {};
+    for (let i = 0; i < visitedList.length; i++) {
+      const item = visitedList[index];
+      if (count[item]) {
+        count[item] += 1;
+      } else {
+        count[item] = 1;
+      }
+    }
+  }
 }

@@ -28,31 +28,27 @@ export default class Model {
   async oneItem(id) {
     const url = `https://www.themealdb.com/api/json/v2/9973533/lookup.php?i=${id}`;
     return fetch(url)
-    .then((response) => {
+      .then((response) => {
         return response.json();
-    })
+      })
   }
 
-
-  // getSaveItemName(name) {
-  //   // filter the LocalItems for the record identified by itemName and return it
-  //   return LocalList.find(item => item.name === name);
-  // }
-  // deleteItem() {
-
-  // }
-  
-  removeItem(item) {
-    const myList = this.StoredList();
-    let updatedList = myList.filter(one => one.idMeal != item.idMeal);
-    localStorage.setItem(MY_LIST, JSON.stringify(updatedList));
+  getSavedItem() {
+    // should return a list of all the in the LocalStorage.
+    return LocalList;
   }
+  getSaveItemName(name) {
+    // filter the LocalItems for the record identified by itemName and return it
+    return LocalList.find(item => item.name === name);
+  }
+  deleteItem() {
 
+  }
   StoredList() {
-    let storedListString = localStorage.getItem(MY_LIST)
+    let storedListString = localStorage.getItem(COMMENT_LIST)
     let storedList = []
     if (storedListString) {
-        storedList = JSON.parse(storedListString)
+      storedList = JSON.parse(storedListString)
     }
     return storedList;
   }
@@ -60,9 +56,19 @@ export default class Model {
   getAllSavedItems() {
     return this.storedList();
   }
-  saveItem(item) {
-        let myList = this.StoredList();
-        myList.push(item);
-        localStorage.setItem(MY_LIST, JSON.stringify(myList));
+  getOneHikeComments(name) {
+    let List = this.CommentList();
+    let comment = [];
+    for (let i = 0; i < List.length; i++) {
+      if (List[i].name == name) {
+        comment.push(List[i]);
+      }
+    }
+    return comment;
+  }
+  addComment(comment) {
+    let commentsList = this.CommentList();
+    commentsList.push(comment);
+    localStorage.setItem(COMMENT_LIST, JSON.stringify(commentsList))
   }
 }

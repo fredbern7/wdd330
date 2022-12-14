@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="js/index.js" type="module" defer></script>
     <link href="css/normalize.css" rel="stylesheet">
     <link href="css/small.css" rel="stylesheet">
     <link href="css/medium.css" rel="stylesheet">
     <link href="css/large.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -23,21 +24,27 @@
                     <button class="navBtn" id="about">About</button>
                     <button class="navBtn" id="myRecipe">My Recipes</button>
                     <button class="navBtn" id="viewedItems">Viewed Item</button>
-                    <button class="navBtn" id="searchedItems">Searched Item</button>
                 </div>
             </div>
         </nav>
     </div>
-    <form name='search' id="search">
-        <input name="searchInput" class="input" type="search" placeholder="input food...." required>
-        <input class="btn" type="submit" value="Search" id="submit" disabled:disabled>
-    </form>
-    <div class="message" id="message">
-    </div>
-    <main id="main" class="main">
+    <div id ="container">
+        <form id="form">
+            <input type="text" id="input" placeholder="input food....">
+            <input type="button" value="search" id="submit">
+        </form>
 
-    </main>
-    <script src="js/index.js" type="module"></script>
+        <div class="div-description" id="div-description">
+        </div>
+
+        <div class="view-container" id="view-container">
+
+        <div class="results" id="results">
+        </div>
+
+        </div>
+
+    </div>
 </body>
 
 </html>

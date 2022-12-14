@@ -3,99 +3,196 @@ import View from './View.js';
 
 export default class Controller {
   constructor(mainId) {
+    console.log(mainId);
     this.mainElement = document.getElementById(mainId);
-    this.Model = new  Model();
-    this.View =  new View(mainId);
+    this.Model = new Model();
+    this.View = new View();
   }
-  //
-  loadPage() {
-    console.log('loadPage');
-    let parentElement = this.mainElement;
-    //this.navBtn()
-    //let hideMenu = document.getElementById('primaryNav');
-    // if(window.innerWidth < '560px') {
-    //   hideMenu.classList.remove('hide');
-    // } else {
-    //   hideMenu.classList.add('hide');
-    // }
-    const form = document.forms['search'];
+  
+  //search and preview the result
+  homepage() {
+    this.View.renderHomePage(this.mainElement);
+    this.menu();
+    let parentElement = document.getElementById("results");
+    this.formListener(parentElement);
     this.random(parentElement);
-    this.form(form, parentElement)
-    // if(navigator.onLine) {
-      
-    //   return;
-    // } else {
-    //   alert("Oops! You're offline. Please check your network connection...");
-    //   document.getElementById('message').appendChild(document.createElement('p').innerText = 'No internet connection!');
-    // }
   }
-
-  navBtn() {
+  menu() {
+    let parentElement = document.getElementById("results")
     let menu = document.getElementById('menu');
     menu.addEventListener('click', () => {
       document.getElementById("primaryNav").classList.toggle("hide");
     })
-    let navBtn = ['about', 'myRecipe', 'viewedItems', 'searchedItems']
-    navBtn.forEach((btnId) => {
-      document.getElementById(btnId).addEventListener('click', () => {
-        console.log(btnId);
-        if(window.innerWidth > '560px') {
-          console.log(window.innerWidth);
-          document.getElementById("primaryNav").classList.toggle("");
-        }else {
-          document.getElementById("primaryNav").classList.toggle("hide");
-        }
-      })
+
+    let navBtn = ['about', 'myRecipe', 'viewedItems']
+    let about = document.getElementById(navBtn[0]);
+    let myRecipe = document.getElementById(navBtn[1]);
+    let viewedItems = document.getElementById(navBtn[2]);
+    let searchedItems = document.getElementById(navBtn[3]);
+
+    about.addEventListener('click', () => {
+      this.about(parentElement);
+    })
+    myRecipe.addEventListener('click', () => {
+      this.viewMyRecipes(parentElement);
+    })
+    viewedItems.addEventListener('click', () => {
+      console.log("viewedItems")
     })
   }
-  form(form, parentElement) {   
-    const [input, submit] = form.elements;
-    input.addEventListener('input', () => {
-      submit.addEventListener('click', () => {
-          let value = input.value;
-          console.log(value);
-        //if (input != "") {
-          // console.log('input')
-          // let promise = this.Model.search(value);
-          // console.log(promise);
-          // console.log(promise);
-          // document.getElementById('message').innerHTML = `<p class = "description">Here is the result. Please select one to view the details...</p>`;
-          // this.output(promise, parentElement)
-        //}
-      })
+  viewMyRecipes(parentElement) {
+    let promise = this.Model.StoredList();
+    this.clearDivs()
+    parentElement.innerHTML = "";
+    let message = `<p class = "description">Here are your saved items...</p>`;
+    this.message(message)
+    this.Storedoutput(promise, parentElement);
+    this.toggle();
+  }
+
+  message(message) {
+    document.getElementById('div-description').innerHTML = "";
+    document.getElementById('div-description').innerHTML = message;
+  }
+
+  toggle() {
+    if(window.innerWidth > '560px') {
+      console.log(window.innerWidth);
+      document.getElementById("primaryNav").classList.toggle("");
+    }else {
+      document.getElementById("primaryNav").classList.toggle("hide");
+    }
+  }
+  nav() {
+    let navElementsArray = Array.from(document.getElementById('primaryNav').children);
+    console.log(navElementsArray);
+    navElementsArray.addEventListener('click', e => {
+      console.log(e.currentTarget.dataset.name);
     })
   }
+
+  // random pick button and pick random
   random(parentElement) {
-    let promise = this.Model.random();
-    document.getElementById('message').innerHTML = `<p class = "description">This is a random selection... please search if your choice is not here...</p>`;
+    document.getElementById('div-description').innerHTML = `
+    <p class = "description">This is a random selection... please search if your choice is not here...</p>
+    `;
+    let promise = this.Model.random()
     this.output(promise, parentElement)
   }
-  output(promise, parentElement) {
-    promise
-      .then((data) => {
-        let list = data.meals;
-        this.View.renderResults(list, parentElement)
-        console.log('log1')
-      })
-    // setTimeout(() => {
-    //   this.addListener(parentElement)
-    // }, 1000);
-  }
-  showOneItem(id, parentElement) {
-    console.log('show one item');
-    document.getElementById('message').innerHTML = `<p class = "description">If you like it add it to you recipe list...</p>`;
+
+  formListener(parentElement) {
+    let submit = document.getElementById('submit');
+    submit.addEventListener('click', () => {
+      let input = document.getElementById('input').value;
+      if (input != "") {
+        document.getElementById('results').classList.add('results');
+        document.getElementById('results').classList.remove('hide');
+        
+        let buttonDiv = document.getElementById('buttonDiv');
+        if (buttonDiv) {
+          buttonDiv.remove()
+        }
+        let detailsSecond = document.getElementById('detailsSecond');
+        if (buttonDiv) {
+          detailsSecond.remove()
+        }
+        parentElement.innerHTML = "";
+        document.getElementById('div-description').innerHTML = "";
+        document.getElementById('div-description').innerHTML = `<p class = "description">Search result... click one to view the details</p>`;
+        let promise = this.Model.search(input);
+        this.output(promise, parentElement);
+      }
+      document.getElementById('input').value = "";
+    })
     
+  }
+  output(promise, parentElement) {
+    let btnNames = ["back", "add"];
+    promise
+    .then((data) => {
+      let list = data.meals;
+      this.View.renderResults(list, parentElement)
+    })
+    setTimeout(() => {
+      this.addListener(parentElement, btnNames)
+    }, 3000);
+  }
+  Storedoutput(promise, parentElement) {
+    let list = promise;
+    let btnNames = ["back", "delete"];
+    this.View.renderResults(list, parentElement)
+    setTimeout(() => {
+      this.addListener(parentElement, btnNames)
+    }, 3000);
+  }
+  showOneItem(id, btnNames) {
+    document.getElementById('div-description').innerHTML = `
+    <p class = "description">If you like it add it to you recipe list...</p>
+    `;
     this.Model.oneItem(id)
+    .then((data) => {
+      let item = data.meals[0];
+      this.View.renderDetails(item, btnNames);
+    })
+    setTimeout(() => {
+      this.Model.oneItem(id)
+      .then((data) => {
+        let item = data.meals[0];
+        this.buttonListener(item, btnNames);
+      })
+    }, 1000);
+    setTimeout(() => {
+      this.Model.oneItem(id)
       .then((data) => {
         console.log(data)
         let item = data.meals[0];
-        console.log(item);
-        this.View.renderDetails(item, parentElement)
+        this.deleteItem(item, btnNames);
       })
-    console.log(parentElement.children);
+    }, 1000);
   }
 
-  addListener(parentElement) {
+  deleteItem(item, btnNames){
+    let idTwo = `${btnNames[1]}`;
+    if(idTwo == 'delete'){
+      let buttonThree = document.getElementById(idTwo);
+      buttonThree.addEventListener('click', () => {
+      this.Model.removeItem(item);
+      this.clearDivs();
+    })
+    }
+  }
+  buttonListener(item, btnNames) {
+    let idOne = `${btnNames[0]}`;
+    let idTwo = `${btnNames[1]}`;
+    let buttonOne = document.getElementById(idOne);
+    let buttonTwo = document.getElementById(idTwo);
+    buttonOne.addEventListener('click', () => {
+      this.clearDivs();
+    })
+    buttonTwo.addEventListener('click', () => {
+        if (idTwo == 'add') {
+          this.Model.saveItem(item);
+          this.clearDivs();
+        }
+        
+    })
+  }
+
+  clearDivs() {
+    document.getElementById('results').classList.add('results');
+    document.getElementById('results').classList.remove('hide');
+    let buttonDiv = document.getElementById('buttonDiv');
+    if (buttonDiv) {
+      buttonDiv.remove()
+    }
+    let detailsSecond = document.getElementById('detailsSecond');
+    if (buttonDiv) {
+      detailsSecond.remove()
+    }
+  }
+
+
+  addListener(parentElement, btnNames) {
     console.log('listener added...')
     // for the stretch you will need to attach a listener to each of the listed hikes to watch for a touchend. 
     parentElement;
@@ -103,8 +200,7 @@ export default class Controller {
     childrenArray.forEach(child => {
       child.children[1].addEventListener('click', e => {
         let id = e.currentTarget.dataset.name;
-        console.log(id);
-        this.showOneItem(id, parentElement);
+        this.showOneItem(id, btnNames);
       });
     });
   }
@@ -114,39 +210,5 @@ export default class Controller {
   bycountry() {
 
   }
-
-  // getLocalList and render
-  localList() {
-
-  }
-  // previous search items
-  searchList() {
-
-  }
-  // previous viewed items
-  viewedList() {
-
-  }
-
-  //other functions**************
-
-  ViewResultOneItem() {
-
-  }
-
-  ViewLocalOneItem() {
-
-  }
-
-  saveItem() {
-
-  }
-
-  deleteItem() {
-
-
-  }
-
-
 
 }

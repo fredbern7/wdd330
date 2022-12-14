@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
 /* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
 html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
+
+
 /*----------- apply a natural box layout model to all elements --------------*/
 * {
     -moz-box-sizing: border-box;
@@ -14,9 +15,7 @@ html {
 }
 
 body {
-    line-height: 30px;
     width: 100%;
-    font-family: 'Roboto Slab', serif;
 }
 
 /*------------------------nav-------------------------------*/
@@ -24,13 +23,7 @@ body {
 h1 {
     font-size: 2rem;
 }
-input {
-    font-family: 'Roboto Slab', serif;
-    font-size: 16px;
-}
-button {
-    font-family: 'Roboto Slab', serif;
-}
+
 .navWrapper {
     background-color: none;
     margin: 0;
@@ -93,6 +86,8 @@ nav div {
 nav div.hide {
     display: none;
 }
+
+/*nav ends here*/
 .container {
     width: 100%;
     font-size: 14px;
@@ -101,12 +96,14 @@ nav div.hide {
 .hide {
     display: none;
 }
+
 form {
     margin: 0 auto;
     padding: 10px;
     width: 100%;
 }
-form>input {
+
+form input {
     display: block;
     border-radius: 5px;
     padding: 3px;
@@ -115,8 +112,20 @@ form>input {
     height: 45px;
     text-align: center;
 }
-.btn:disabled {
-    background-color: rgb(228, 163, 59);
+
+.input:required {
+    background-color: rgb(247, 247, 247);
+}
+
+.input:required:valid {
+    background-color: rgb(217, 249, 202);
+}
+
+.btn {
+    background-color: rgb(240, 240, 240);
+}
+.btn:hover {
+    border: #000 solid 2.5px;
 }
 
 .view-container {
@@ -124,12 +133,14 @@ form>input {
     margin: 0 auto;
     width: 100%;
 }
-.div-description {
+
+.message {
     margin-bottom: 40px;
     width: 100%;
     padding: 10px;
 }
-.div-description>p {
+
+.message>p {
     color: green;
     text-align: center;
     font-style: italic;
@@ -144,6 +155,7 @@ form>input {
     width: 100%;
     gap: 20px;
 }
+
 .item-div {
     display: block;
     justify-content: space-between;
@@ -153,13 +165,16 @@ form>input {
     background-color: rgb(207, 200, 200);
     text-align: center;
 }
+
 .img {
     margin-bottom: 5px;
     width: 100%;
 }
+
 .item-div>p {
     font-weight: 700;
 }
+
 .view {
     margin: 10px 0;
     border-radius: 40px;
@@ -171,80 +186,58 @@ form>input {
     color: rgb(214, 253, 179);
 }
 
-.food {
-    margin: 0 auto;
-    padding:0;
-    border-radius: 10px;
+.back-add {
+    position: relative;
+    z-index: 1;
+    padding-left: 30px;
+    width: 100%;
+    margin-bottom: -125px;
+
 }
+
+.back,
+.add {
+    border: none;
+    border-radius: 5px;
+    height: 35px;
+    width: 75px;
+    background-color: #f9b466;
+    color: rgb(5, 5, 5);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+    font-style: italic;
+    font-weight: 500;
+}
+
+.food {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(198, 194, 202);
+}
+
 .ingredient {
     padding: 10px;
 }
-.ingred-ul {
-    margin-top: 10px;
-    padding-left: 30px;
-}
+
 .ingredient li {
-    list-style:circle;
+    list-style: none;
 }
+
 .foodAndIngredients {
-    margin-top: 10px;
+    margin-top: 60px;
     padding: 10px;
     width: 100%;
     z-index: 0px;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 500;
 }
-.ingredientsImages {
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
-}
-.imgDiv {
-    width: 30%;
-    display: block;
-    justify-content: space-around;
-}
-.Divimg{
-    width: 45px;
-}
+
 .instructions {
     padding: 10px;
     width: 100%;
     font-style: italic;
-    font-weight: 400;
-}
-.instructions h3 {
-    margin:0;
-}
-.instructions p {
-    padding: 0 10px;
-}
-
-
-.buttonDiv{
-    padding-left: 10px;
-    display: flex;
-    grid-template-columns: 1fr 1fr; 
-    gap: 10px;
-    justify-content: flex-start;
-}
-.back, .add {
-    border: none;
-    border-radius: 5px;
-    height: 30px;
-    width: 100px;
-    color: rgb(5, 5, 5);
-    border:none;
-    box-shadow: 0px 0px 2px 2px rgb(0,0,0);
-    font-style: italic;
-    font-weight: 1000;
-}
-.back:hover, .add:hover {
-    font-weight: 1200;
-    background-color: antiquewhite;
+    font-weight: 500;
 }
 
 

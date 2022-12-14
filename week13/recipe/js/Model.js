@@ -1,13 +1,10 @@
 //database, adding item, editing item, filtering, etc.
 
 let MY_LIST = 'saved_list';
-let SEARCH_HISTORY = 'search_history';
-let ADDED_HISTORY = 'added_history';
-let DELETED_HISTORY = 'deleted_history';
+let VIEWED_HISTORY = 'view_history';
 
 export default class Model {
   constructor() {
-    // We need a constructor...but in this case it isn't doing much
   }
   async random() {
     const url = `https://www.themealdb.com/api/json/v2/9973533/randomselection.php`;
@@ -28,47 +25,55 @@ export default class Model {
   async oneItem(id) {
     const url = `https://www.themealdb.com/api/json/v2/9973533/lookup.php?i=${id}`;
     return fetch(url)
-      .then((response) => {
+    .then((response) => {
         return response.json();
-      })
+    })
   }
 
-  getSavedItem() {
-    // should return a list of all the in the LocalStorage.
-    return LocalList;
+  findItem(item) {
+    const item = this.StoredList.includes(item.idMeal);
+    return item;
   }
-  getSaveItemName(name) {
-    // filter the LocalItems for the record identified by itemName and return it
-    return LocalList.find(item => item.name === name);
+  
+  saveItem(item) {
+        let myList = this.StoredList();
+        myList.push(item);
+        localStorage.setItem(MY_LIST, JSON.stringify(myList));
   }
-  deleteItem() {
+  removeItem(item) {
+    const myList = this.StoredList();
+    let updatedList = myList.filter(one => one.idMeal != item.idMeal);
+    localStorage.setItem(MY_LIST, JSON.stringify(updatedList));
+  }
 
-  }
   StoredList() {
-    let storedListString = localStorage.getItem(COMMENT_LIST)
+    let storedListString = localStorage.getItem(MY_LIST)
     let storedList = []
     if (storedListString) {
-      storedList = JSON.parse(storedListString)
+        storedList = JSON.parse(storedListString)
     }
     return storedList;
   }
 
-  getAllSavedItems() {
-    return this.storedList();
+  saveViewedItems(item) {
+    let viewedList = this.StoredList();
+    viewedList.push(item);
+        localStorage.setItem(VIEWED_HISTORY, JSON.stringify(viewedList));
   }
-  getOneHikeComments(name) {
-    let List = this.CommentList();
-    let comment = [];
-    for (let i = 0; i < List.length; i++) {
-      if (List[i].name == name) {
-        comment.push(List[i]);
-      }
+
+  removeViewedItem() {
+    const viewedList = this.StoredList();
+    let updatedList = viewedList.filter(one => one.idMeal != item.idMeal);
+    localStorage.setItem(VIEWED_HISTORY, JSON.stringify(updatedList));
+  }
+
+  ViewList() {
+    let viewedListString = localStorage.getItem(VIEWED_HISTORY)
+    let viewedList = []
+    if (viewedListString) {
+        viewedList = JSON.parse(viewedListString)
     }
-    return comment;
+    return viewedList;
   }
-  addComment(comment) {
-    let commentsList = this.CommentList();
-    commentsList.push(comment);
-    localStorage.setItem(COMMENT_LIST, JSON.stringify(commentsList))
-  }
+
 }

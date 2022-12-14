@@ -12,7 +12,7 @@ nav {
     max-width: 75rem;
     margin: 0 auto;
 }
-nav ul li a {
+.navBtn {
     padding: .4rem 1rem;
 }
 h1 {

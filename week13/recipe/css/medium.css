@@ -57,65 +57,77 @@
 
     .item-div {
         min-width: 100px;
-        max-width: 250px;
+        max-width: 300px;
     }
     .img {
         width: 100%;
     }
     .item-div>p {
-        inline-size:250px;
-        overflow-wrap: break-word;
-    }
-
-    .back-add {
-        position: relative;
-        z-index: 1;
-        padding-left: 30px;
-        width: 100%;
-        margin-bottom: -125px;
-    }
-    .back, .add {
-        border: none;
-        border-radius: 5px;
-        height: 35px;
-        width: 75px;
-        background-color:#f9b466;
-        color: rgb(5, 5, 5);
-        border:none;
-        border-radius:10px;
-        box-shadow: 0px 0px 2px 2px rgb(0,0,0);
-        font-style: italic;
-        font-weight: 500;
+        font-size: medium;
     }
     .food {
-        padding: 10px;
-        border-radius: 10px;
-        background-color: rgb(198, 194, 202);
+        padding: 0;
+        border-radius: 10px;  
     }
-    .ingredient {
-        padding: 10px;
+    .food h2 {
+        font-size: 28px;
+    }
+    .food p {
         font-size: 18px;
     }
-    .ingredient li {
-        list-style: none;
+    .ingredient {
+        padding: 0 30px;
+        font-size: 18px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
     }
     .foodAndIngredients {
         display: grid;
         grid-template-columns: 1fr 2fr;
-        margin-top: 60px;
+        margin-top: 0;
         padding: 10px;
         width: 100%;
         z-index: 0px;
         font-style: italic;
-        font-weight: 500;
+        font-weight: 400;
     }
     
+    .ingredientsImages {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .imgDiv {
+        width: 30%;
+        display: block;
+        justify-content: space-around;
+    }
+    
+    .Divimg{
+        width: 75px;
+    }
+
     .instructions {
         padding: 10px;
         width: 100%;
         font-style: italic;
-        font-weight: 500;
+        font-weight: 400;
         font-size: 18px;
+    }
+
+    .buttonDiv{
+        margin-bottom: 10px;
+        padding-left: 10px;
+        display: flex;
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px;
+        justify-content: flex-start;
+    }
+    .back, .add {
+        height: 25px;
     }
     
 }

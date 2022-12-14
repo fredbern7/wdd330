@@ -26,7 +26,7 @@ export default class View {
         return;
 
     }
-    renderDetails(item) {
+    renderDetails(item, btnNames) {
         let list = [
                     item.strIngredient1, 
                     item.strIngredient2, 
@@ -77,8 +77,7 @@ export default class View {
                 let measureAndIngred = `${list2[i]} ${list[i]}`;
                 newList.push(measureAndIngred);
             }
-        }
-        
+        } 
         let imgList = [];
         for (let i = 0; i < list.length; i++) {
             if (list[i] != '') {
@@ -86,26 +85,31 @@ export default class View {
                 imgList.push(imageName);
             }
         }
+
         document.getElementById('results').classList.remove('results');
         document.getElementById('results').classList.add('hide');
         let detailsDiv = document.getElementById('view-container');
-        let detailsSecond = document.createElement('div');
-        detailsSecond.classList.add('detailsSecond');
-        detailsSecond.setAttribute('id', 'detailsSecond');
+
+        //buttons
         let buttonDiv = document.createElement('div');
         buttonDiv.classList.add('buttonDiv');
         buttonDiv.setAttribute('id', 'buttonDiv');
-        let back = document.createElement('button');
-        back.classList.add('back');
-        back.setAttribute('data-name', 'back');
-        back.innerText = "back";
-        let add = document.createElement('button');
-        add.classList.add('add');
-        add.setAttribute('data-name','add');
-        add.innerText = "add";
-        buttonDiv.appendChild(back);
-        buttonDiv.appendChild(add);
+        let buttonOne = document.createElement('button');
+        buttonOne.classList.add('back');
+        buttonOne.setAttribute('data-name', `${btnNames[0]}`);
+        buttonOne.innerText = `${btnNames[0]}`;
+        let buttonTwo = document.createElement('button');
+        buttonTwo.classList.add('add');
+        buttonTwo.setAttribute('data-name',`${btnNames[1]}`);
+        buttonTwo.innerText = `${btnNames[1]}`;
+        buttonDiv.appendChild(buttonOne);
+        buttonDiv.appendChild(buttonTwo);
         detailsDiv.appendChild(buttonDiv);
+        //buttons
+
+        let detailsSecond = document.createElement('div');
+        detailsSecond.classList.add('detailsSecond');
+        detailsSecond.setAttribute('id', 'detailsSecond');
         let foodAndIngredients = document.createElement('div');
         foodAndIngredients.classList.add('foodAndIngredients');
         let food = document.createElement('div');

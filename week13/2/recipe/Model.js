@@ -33,10 +33,7 @@ export default class Model {
     })
   }
 
-  getSavedItem() {
-    // should return a list of all the in the LocalStorage.
-    return LocalList;
-  }
+
   getSaveItemName(name) {
     // filter the LocalItems for the record identified by itemName and return it
     return LocalList.find(item => item.name === name);
@@ -45,6 +42,7 @@ export default class Model {
 
   }
   StoredList() {
+    console.log('Model:StoredList')
     let storedListString = localStorage.getItem(MY_LIST)
     let storedList = []
     if (storedListString) {
@@ -53,22 +51,15 @@ export default class Model {
     return storedList;
   }
 
-  getAllSavedItems() {
-    return this.storedList();
-  }
-  getOneHikeComments(name) {
-    let List = this.CommentList();
-    let comment = [];
-    for (let i = 0; i < List.length; i++) {
-        if (List[i].name == name) {
-            comment.push(List[i]);
-        }
-    }    
-    return comment;
-    }
   saveItem(item) {
         let myList = this.StoredList();
         myList.push(item);
         localStorage.setItem(MY_LIST, JSON.stringify(myList));
+  }
+
+  removeItem(item) {
+    const myList = this.storedList();
+    let updatedList = myList.filter(one => one != item);
+    localStorage.setItem(MY_LIST, JSON.stringify(updatedList));
   }
 }

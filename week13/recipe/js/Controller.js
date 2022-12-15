@@ -153,11 +153,11 @@ export default class Controller {
     let buttonTwo = document.getElementById(idTwo);
     buttonOne.addEventListener('click', () => {
       this.clearDivs();
-      this.btmMenu()
       let detailsSecond = document.getElementById('detailsSecond');
       if(detailsSecond) {
         detailsSecond.remove(); 
       }
+      this.toggle()
     })
     buttonTwo.addEventListener('click', () => {
         if (idTwo == 'add') {

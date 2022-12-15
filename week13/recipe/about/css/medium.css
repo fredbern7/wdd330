@@ -1,0 +1,140 @@
+/* 35em is also 560px when basefont is 16px */
+@media only screen and (min-width: 35rem) {
+    /* div {
+        border: 1px red solid;
+    } */
+    
+    nav button {
+        display: none;
+    }
+
+    /*hide the button in the medium view*/
+
+    nav div.hide {
+        display: block;
+    }
+
+    nav div {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        justify-content: flex-end;
+    }
+
+    .navBtn {
+        display: inline-table;
+        float: left;
+        margin: 0;
+        width: 140px;
+        border: none;
+    }
+    /*nav ends here*/
+    
+    .about-div {
+        margin: 20px auto;
+        width: 600px;
+    }
+
+    form {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 5px;
+        width: 400px;
+    }
+    form>input {
+        border-radius: 5px;
+        padding: 3px;
+        margin-top: 10px;
+        width: 100%;
+        height: 30px;
+        text-align: center;
+    
+    }
+    .results {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:center;
+        margin: 0 auto;
+        padding: 10px;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .item-div {
+        min-width: 100px;
+        max-width: 300px;
+    }
+    .img {
+        width: 100%;
+    }
+    .item-div>p {
+        font-size: medium;
+    }
+    .food {
+        padding: 0;
+        border-radius: 10px;  
+    }
+    .food h2 {
+        font-size: 28px;
+    }
+    .food p {
+        font-size: 18px;
+    }
+    .ingredient {
+        padding: 0 30px;
+        font-size: 18px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+    .foodAndIngredients {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        margin-top: 0;
+        padding: 10px;
+        width: 100%;
+        z-index: 0px;
+        font-style: italic;
+        font-weight: 400;
+    }
+    
+    .ingredientsImages {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .imgDiv {
+        width: 30%;
+        display: block;
+        justify-content: space-around;
+    }
+    
+    .Divimg{
+        width: 75px;
+    }
+
+    .instructions {
+        padding: 10px;
+        width: 100%;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+    .buttonDiv{
+        margin-bottom: 10px;
+        padding-left: 10px;
+        display: flex;
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px;
+        justify-content: flex-start;
+    }
+    .back, .add {
+        height: 25px;
+    }
+    
+}
+
+/*end medium */

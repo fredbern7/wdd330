@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/*----------- apply a natural box layout model to all elements --------------*/
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    line-height: 30px;
+    width: 100%;
+    font-family: 'Roboto Slab', serif;
+}
+
+/*------------------------nav-------------------------------*/
+
+h1 {
+    font-size: 2rem;
+}
+input {
+    font-family: 'Roboto Slab', serif;
+    font-size: 16px;
+}
+button {
+    font-family: 'Roboto Slab', serif;
+}
+.navWrapper {
+    background-color: none;
+    margin: 0;
+}
+
+nav #menu {
+    margin: .2rem 1%;
+    margin-top: .6rem;
+    margin-left: .6rem;
+    border-radius: 5px;
+    background-color: transparent;
+    height: 45px;
+    width: 45px;
+    border: 1px solid rgb(225, 217, 217);
+    font-size: 1.6rem;
+    /* apple recomment 44px = 1.6rem */
+    color: rgb(181, 172, 172);
+}
+
+nav {
+    font-family: sans-serif;
+}
+
+nav div {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.navBtnContainer {
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+}
+
+.navBtn {
+    background-color: transparent;
+    margin: 0;
+    width: 100%;
+    padding: .8rem 0;
+    text-decoration: none;
+    color: #000;
+    border: none;
+    border-top: 1px solid gray;
+}
+
+.active {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+/*use way finding by controling the active class*/
+
+.navBtn:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+nav div.hide {
+    display: none;
+}
+.container {
+    width: 100%;
+    font-size: 14px;
+}
+
+.hide {
+    display: none;
+}
+
+.about-div {
+    margin: 0 auto;
+    padding: 10px;
+}
+form {
+    margin: 0 auto;
+    padding: 10px;
+    width: 100%;
+}
+form>input {
+    display: block;
+    border-radius: 5px;
+    padding: 3px;
+    margin-top: 10px;
+    width: 100%;
+    height: 45px;
+    text-align: center;
+}
+.btn:disabled {
+    background-color: rgb(228, 163, 59);
+}
+
+.view-container {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+}
+.div-description {
+    margin-bottom: 40px;
+    width: 100%;
+    padding: 10px;
+}
+.div-description>p {
+    color: green;
+    text-align: center;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+    padding: 10px;
+    width: 100%;
+    gap: 20px;
+}
+.item-div {
+    display: block;
+    justify-content: space-between;
+    padding: 10px 10px 20px 10px;
+    border-radius: 5px;
+    min-width: 80px;
+    background-color: rgb(207, 200, 200);
+    text-align: center;
+}
+.img {
+    margin-bottom: 5px;
+    width: 100%;
+}
+.item-div>p {
+    font-weight: 700;
+}
+.view {
+    margin: 10px 0;
+    border-radius: 40px;
+    width: 75px;
+    height: 30px;
+    background-color: rgb(92, 92, 92);
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(214, 253, 179);
+}
+
+.food {
+    margin: 0 auto;
+    padding:0;
+    border-radius: 10px;
+}
+.ingredient {
+    padding: 10px;
+}
+.ingred-ul {
+    margin-top: 10px;
+    padding-left: 30px;
+}
+.ingredient li {
+    list-style:circle;
+}
+.foodAndIngredients {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    z-index: 0px;
+    font-style: italic;
+    font-weight: 400;
+}
+.ingredientsImages {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+.imgDiv {
+    width: 30%;
+    display: block;
+    justify-content: space-around;
+}
+.Divimg{
+    width: 45px;
+}
+.instructions {
+    padding: 10px;
+    width: 100%;
+    font-style: italic;
+    font-weight: 400;
+}
+.instructions h3 {
+    margin:0;
+}
+.instructions p {
+    padding: 0 10px;
+}
+
+
+.buttonDiv{
+    padding-left: 10px;
+    display: flex;
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px;
+    justify-content: flex-start;
+}
+.back, .add {
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+    color: rgb(5, 5, 5);
+    border:none;
+    box-shadow: 0px 0px 2px 2px rgb(0,0,0);
+    font-style: italic;
+    font-weight: 1000;
+}
+.back:hover, .add:hover {
+    font-weight: 1200;
+    background-color: antiquewhite;
+}
+
+
+/* .null {
+    display: none;
+} */
+
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}

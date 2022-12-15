@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.hide {
+    display: none;
+}
+main {
+    margin: 0 auto;
+    width: 1200px;
+}
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.item-div {
+    margin-top: 10px;
+    background-color: gray;
+    width: 200px;
+}
+img {
+    width: 200px;
+}

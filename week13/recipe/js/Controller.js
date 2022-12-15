@@ -24,30 +24,24 @@ export default class Controller {
       document.getElementById("primaryNav").classList.toggle("hide");
     })
 
-    let navBtn = ['about', 'myRecipe', 'viewedItems']
+    let navBtn = ['about', 'myRecipe']
     let about = document.getElementById(navBtn[0]);
     let myRecipe = document.getElementById(navBtn[1]);
-    let viewedItems = document.getElementById(navBtn[2]);
-    let searchedItems = document.getElementById(navBtn[3]);
 
     about.addEventListener('click', () => {
-      this.about(parentElement);
+      window.open('about', '_blank');
     })
     myRecipe.addEventListener('click', () => {
       this.viewMyRecipes(parentElement);
     })
-    viewedItems.addEventListener('click', () => {
-      console.log("viewedItems")
-    })
   }
 
-  about() {
-
-  }
   viewMyRecipes(parentElement) {
     let promise = this.Model.StoredList();
     this.clearDivs()
-    parentElement.innerHTML = "";
+    if(parentElement) {
+      parentElement.innerHTML = "";
+    }
     let message;
     if (promise) {
       message = `<p class = "description">Here are your saved items...</p>`;
@@ -59,20 +53,6 @@ export default class Controller {
     this.toggle();
   }
 
-  viewedHistory() {
-    let promise = this.Model.StoredList();
-    this.clearDivs()
-    parentElement.innerHTML = "";
-    let message;
-    if(promise = '') {
-      message = `There is no Viewed Item`;
-    }else{
-      message = `<p class = "description">Here are your saved items...</p>`;
-    }
-    this.message(message)
-    this.Storedoutput(promise, parentElement);
-    this.toggle();
-  }
 
   // random pick button and pick random
   random(parentElement) {
@@ -138,6 +118,7 @@ export default class Controller {
       this.View.renderDetails(item, btnNames);
     })
     this.addDeleteListener(id, btnNames);
+    this.btmMenu();
   }
 
   addDeleteListener(id, btnNames) {
@@ -145,22 +126,23 @@ export default class Controller {
         let item = data.meals[0];
         this.buttonListener(item, btnNames);
       })
-    }, 1000);
+    }, 3000);
     setTimeout(() => {this.Model.oneItem(id).then((data) => {
         let item = data.meals[0];
         this.deleteItem(item, btnNames);
-      })}, 1000);
+      })}, 3000);
   }
 
   deleteItem(item, btnNames){
     let idTwo = `${btnNames[1]}`;
-    if(idTwo == 'delete'){
+    if(idTwo != 'add'){
       let buttonThree = document.getElementById(idTwo);
       buttonThree.addEventListener('click', () => {
       this.Model.removeItem(item);
-      this.clearDivs();
-      document.getElementById
-      this.viewMyRecipes();
+      let parentElement = document.getElementById('results');
+      this.clearMessages();
+      this.viewMyRecipes(parentElement);
+      this.toggle()
     })
     }
   }
@@ -170,12 +152,22 @@ export default class Controller {
     let buttonOne = document.getElementById(idOne);
     let buttonTwo = document.getElementById(idTwo);
     buttonOne.addEventListener('click', () => {
-      this.viewMyRecipes();
+      this.clearDivs();
+      this.btmMenu()
+      let detailsSecond = document.getElementById('detailsSecond');
+      if(detailsSecond) {
+        detailsSecond.remove(); 
+      }
     })
     buttonTwo.addEventListener('click', () => {
         if (idTwo == 'add') {
           this.Model.saveItem(item);
           this.clearDivs();
+          this.clearMessages();
+          let parentElement = document.getElementById('results');
+          this.menu()
+          this.viewMyRecipes(parentElement);
+          this.toggle()
         }
     })
   }
@@ -196,10 +188,14 @@ export default class Controller {
 
   //other functions
   message(message) {
-    document.getElementById('div-description').innerHTML = "";
     document.getElementById('div-description').innerHTML = message;
   }
-
+  clearMessages() {
+    let messageContent = document.getElementById('div-description');
+    if(messageContent) {
+      document.getElementById('div-description').innerHTML = "";
+    }
+  }
   toggle() {
     if(window.innerWidth > '560px') {
       console.log(window.innerWidth);
@@ -215,6 +211,13 @@ export default class Controller {
       console.log(e.currentTarget.dataset.name);
     })
   }
+  btmMenu() {
+    let parentElement = document.getElementById("results")
+    let menu = document.getElementById('menu');
+    menu.addEventListener('click', () => {
+      document.getElementById("primaryNav").classList.toggle("hide");
+    })
+  }
   clearDivs() {
     document.getElementById('results').classList.add('results');
     document.getElementById('results').classList.remove('hide');
@@ -223,8 +226,8 @@ export default class Controller {
       buttonDiv.remove()
     }
     let detailsSecond = document.getElementById('detailsSecond');
-    if (buttonDiv) {
-      detailsSecond.remove()
-    }
+      if(detailsSecond) {
+        detailsSecond.remove(); 
+      }  
   }
 }

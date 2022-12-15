@@ -30,6 +30,11 @@
     }
     /*nav ends here*/
     
+    .about-div {
+        margin: 20px auto;
+        width: 600px;
+    }
+
     form {
         display: grid;
         grid-template-columns: 2fr 1fr;
